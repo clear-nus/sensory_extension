@@ -40,8 +40,8 @@ def evaluate(experiment_name, device='cuda'):
                 
         'tool30_neusingle_kernel_svmlinear'              : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'linear'),
         'tool30_neusingle_kernel_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'rbf'),
-        'tool20_neusingle_kernel_svmlinear'              : partial(_evaluate_tool_neusingle_svm, 'rodTap', 20, 4000, 'all', 'linear'),
-        'tool20_neusingle_kernel_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 'rodTap', 20, 4000, 'all', 'rbf'),
+        'tool30_neusingle_kernel_svmlinear'              : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'linear'),
+        'tool30_neusingle_kernel_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'rbf'),
         
         'tool50_neutouch_kernel_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 4000, 'all', 'linear'),
         'tool50_neutouch_kernel_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 4000, 'all', 'rbf'),
@@ -57,7 +57,10 @@ def evaluate(experiment_name, device='cuda'):
         'tool50_neusingle_kernel_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 'rodTap', 50, 4000, 'all', 'rbf'),
    
         
-#         'handoverrod_biotac_baseline_svmlinear'            : partial(_evaluate_handover_svm, 'rod', 'biotac', False, 'linear'),
+        'handover_0_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 4000, 'all', 'linear'),
+        'handover_0_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 4000, 'all', 'rbf'),
+        'handover_0_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 4000, 'all'),
+        'handover_0_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'handover', 0, 4000, 'all', device),
 #         'handoverrod_biotac_baseline_svmrbf'               : partial(_evaluate_handover_svm, 'rod', 'biotac', False, 'rbf'),
 #         'handoverrod_biotac_baseline_mlp'                  : partial(_evaluate_handover_mlp, 'rod', 'biotac', False),
 #         'handoverrod_biotac_baseline_rnn'                  : partial(_evaluate_handover_rnn, 'rod', 'biotac', device),
@@ -223,7 +226,7 @@ def _create_evaluator(estimator, param_grid, scoring, cv=4, N=5, callback=None):
 #                                     | |                                             
 
 
-def _load_data(task, tool_type, frequency=4000, transformation='default', signal_type="all"):
+def _load_data(task, tool_type, frequency, transformation, signal_type):
     
     data_dir = f'../robot_sensory_extension/data/kernel_features/kernel_{task}_{tool_type}_{frequency}.npz'
     npzfile = np.load(data_dir)
@@ -259,7 +262,7 @@ def _load_data(task, tool_type, frequency=4000, transformation='default', signal
 
 def _evaluate_tool_svm(task, tool_type, frequency, signal_type, kernel):
 
-    X, y = _load_data(task, tool_type, frequency=4000, transformation='default', signal_type=signal_type)
+    X, y = _load_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
     
     param_grid = { 'C': [1, 3, 10, 30, 100] }
     
@@ -271,7 +274,7 @@ def _evaluate_tool_svm(task, tool_type, frequency, signal_type, kernel):
 
 def _evaluate_tool_mlp(task, tool_type, frequency, signal_type):
 
-    X, y = _load_data(task, tool_type, frequency=4000, transformation='default', signal_type=signal_type)
+    X, y = _load_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
     
     param_grid = {
         'learning_rate_init': [0.01, 0.03, 0.1, 0.3],
@@ -286,7 +289,7 @@ def _evaluate_tool_mlp(task, tool_type, frequency, signal_type):
 
 def _evaluate_tool_rnn(task, tool_type, frequency, signal_type, device):
     
-    X, y = _load_data(task, tool_type, frequency=4000, transformation='tensor', signal_type=signal_type)
+    X, y = _load_data(task, tool_type, frequency=frequency, transformation='tensor', signal_type=signal_type)
     
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
@@ -310,7 +313,7 @@ def _evaluate_tool_rnn(task, tool_type, frequency, signal_type, device):
 
 def _evaluate_tool_neusingle_svm(task, tool_type, frequency, signal_type, kernel):
     
-    X, y = _load_data(task, tool_type, frequency=4000, transformation='single', signal_type=signal_type)
+    X, y = _load_data(task, tool_type, frequency=frequency, transformation='single', signal_type=signal_type)
 
 
     best_taxel = 0
@@ -350,51 +353,11 @@ def _evaluate_tool_neusingle_svm(task, tool_type, frequency, signal_type, kernel
 #                                                               | |                                             
 
 
-def _load_handover(item, signal_type, transformation):
-    
-    if signal_type == 'biotac':
-        
-        npzfile = np.load(f'preprocessed/biotac_handover_{item}.npz')
-        X = npzfile['signals'] / 1000
-        y = npzfile['labels'][:, 0].astype(np.compat.long)
-    
-    if signal_type == 'neutouch':
-        
-        npzfile = np.load(f'preprocessed/neutouch_handover_{item}.npz')
-        X = npzfile['signals'] / 40
-        y = npzfile['labels'][:, 0].astype(np.compat.long)
-    
-    if signal_type == 'neuhalf':
-        
-        npzfile = np.load(f'preprocessed/neutouch_handover_{item}.npz')
-        X = npzfile['signals'][:, 0:40, :] / 40
-        y = npzfile['labels'][:, 0].astype(np.compat.long)
-        
-    if transformation == 'default':
-        
-        X = np.reshape(X, (X.shape[0], -1))
-    
-    if transformation == 'fft':
-        
-        X = np.abs(np.fft.fft(X)) / 10
-        X = np.reshape(X, (X.shape[0], -1))
-    
-    if transformation == 'tensor' and signal_type == 'biotac':
-    
-        X = torch.Tensor(np.swapaxes(X, 1, 2))
-        y = torch.Tensor(np.reshape(y, (-1, 1)))
-    
-    if transformation == 'tensor' and signal_type == 'neutouch':
-        
-        torch.Tensor(np.expand_dims(X, 2))
-        y = torch.Tensor(np.reshape(y, (-1, 1)))
-    
-    return X, y
 
 
-def _evaluate_handover_svm(item, signal_type, perform_fft, kernel):
+def _evaluate_classifier_svm(task, tool_type, frequency, signal_type, kernel):
 
-    X, y = _load_handover(item, signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
     
     param_grid = {
         'C': [1, 3, 10, 30, 100]
@@ -406,9 +369,9 @@ def _evaluate_handover_svm(item, signal_type, perform_fft, kernel):
     return evaluate(X, y)
 
 
-def _evaluate_handover_mlp(item, signal_type, perform_fft):
+def _evaluate_classifier_mlp(task, tool_type, frequency, signal_type):
 
-    X, y = _load_handover(item, signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
     
     param_grid = {
         'learning_rate_init': [0.01, 0.03, 0.1, 0.3],
@@ -421,9 +384,9 @@ def _evaluate_handover_mlp(item, signal_type, perform_fft):
     return evaluate(X, y)
 
 
-def _evaluate_handover_rnn(item, signal_type, device):
+def _evaluate_classifier_rnn(task, tool_type, frequency, signal_type, device):
 
-    X, y = _load_handover(item, signal_type, 'tensor')
+    X, y = _load_data(task, tool_type, frequency=frequency, transformation='tensor', signal_type=signal_type)
     
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     

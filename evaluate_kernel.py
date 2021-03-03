@@ -186,7 +186,7 @@ class RNNModule(nn.Module):
         
         super(RNNModule, self).__init__()
         
-        self.rnn = nn.LSTM(input_dim, 16, batch_first=True)
+        self.rnn = nn.GRU(input_dim, 16, batch_first=True)
         self.linear1 = nn.Linear(16, 8)
         self.linear2 = nn.Linear(8, output_dim)
 

@@ -40,8 +40,7 @@ def evaluate(experiment_name, device='cuda'):
                 
         'tool30_neusingle_kernel_svmlinear'              : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'linear'),
         'tool30_neusingle_kernel_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'rbf'),
-        'tool30_neusingle_kernel_svmlinear'              : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'linear'),
-        'tool30_neusingle_kernel_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 'rodTap', 30, 4000, 'all', 'rbf'),
+
         
         'tool50_neutouch_kernel_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 4000, 'all', 'linear'),
         'tool50_neutouch_kernel_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 4000, 'all', 'rbf'),
@@ -61,6 +60,22 @@ def evaluate(experiment_name, device='cuda'):
         'handover_0_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 4000, 'all', 'rbf'),
         'handover_0_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 4000, 'all'),
         'handover_0_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'handover', 0, 4000, 'all', device),
+        
+        'handover_1_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 4000, 'all', 'linear'),
+        'handover_1_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 4000, 'all', 'rbf'),
+        'handover_1_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 4000, 'all'),
+        'handover_1_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'handover', 1, 4000, 'all', device),
+        
+        'handover_2_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 4000, 'all', 'linear'),
+        'handover_2_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 4000, 'all', 'rbf'),
+        'handover_3_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 4000, 'all'),
+        'handover_3_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'handover', 2, 4000, 'all', device),
+        
+        'foodPoking_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 4000, 'all', 'linear'),
+        'foodPoking_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 4000, 'all', 'rbf'),
+        'foodPoking_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 4000, 'all'),
+        'foodPoking_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'foodPoking', 'foodPoking', 4000, 'all', device),
+
 #         'handoverrod_biotac_baseline_svmrbf'               : partial(_evaluate_handover_svm, 'rod', 'biotac', False, 'rbf'),
 #         'handoverrod_biotac_baseline_mlp'                  : partial(_evaluate_handover_mlp, 'rod', 'biotac', False),
 #         'handoverrod_biotac_baseline_rnn'                  : partial(_evaluate_handover_rnn, 'rod', 'biotac', device),

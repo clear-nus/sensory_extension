@@ -87,29 +87,29 @@ def evaluate(experiment_name, device='cuda'):
         'tool50_neuhalf_fft_svmrbf'                        : partial(_evaluate_tool_svm, 50, 'neuhalf', True, 'rbf'),
         'tool50_neuhalf_fft_mlp'                           : partial(_evaluate_tool_mlp, 50, 'neuhalf', True),
         
-        'tool20_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_biotac_aesvm, 20, 'linear'),
-        'tool20_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_biotac_aesvm, 20, 'rbf'),
-        'tool20_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_biotac_aemlp, 20),
+        'tool20_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_aesvm, 20, 'linear'),
+        'tool20_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_aesvm, 20, 'rbf'),
+        'tool20_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_aemlp, 20),
         
-        'tool20_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_neutouch_aesvm, 20, 'linear'),
-        'tool20_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_neutouch_aesvm, 20, 'rbf'),
-        'tool20_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_neutouch_aemlp, 20),
+        'tool20_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_aesvm, 20, 'linear'),
+        'tool20_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_aesvm, 20, 'rbf'),
+        'tool20_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_aemlp, 20),
         
-        'tool30_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_biotac_aesvm, 30, 'linear'),
-        'tool30_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_biotac_aesvm, 30, 'rbf'),
-        'tool30_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_biotac_aemlp, 30),
+        'tool30_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_aesvm, 30, 'linear'),
+        'tool30_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_aesvm, 30, 'rbf'),
+        'tool30_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_aemlp, 30),
         
-        'tool30_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_neutouch_aesvm, 30, 'linear'),
-        'tool30_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_neutouch_aesvm, 30, 'rbf'),
-        'tool30_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_neutouch_aemlp, 30),
+        'tool30_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_aesvm, 30, 'linear'),
+        'tool30_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_aesvm, 30, 'rbf'),
+        'tool30_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_aemlp, 30),
         
-        'tool50_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_biotac_aesvm, 50, 'linear'),
-        'tool50_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_biotac_aesvm, 50, 'rbf'),
-        'tool50_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_biotac_aemlp, 50),
+        'tool50_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_aesvm, 50, 'linear'),
+        'tool50_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_aesvm, 50, 'rbf'),
+        'tool50_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_aemlp, 50),
         
-        'tool50_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_neutouch_aesvm, 50, 'linear'),
-        'tool50_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_neutouch_aesvm, 50, 'rbf'),
-        'tool50_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_neutouch_aemlp, 50),
+        'tool50_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_aesvm, 50, 'linear'),
+        'tool50_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_aesvm, 50, 'rbf'),
+        'tool50_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_aemlp, 50),
         
         'tool20_neusingle_baseline_svmlinear'              : partial(_evaluate_tool_neusingle_svm, 20, 'linear', False),
         'tool20_neusingle_baseline_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 20, 'rbf', False),
@@ -373,8 +373,8 @@ def _evaluate_tool_rnn(tool_length, signal_type, device):
                                    iterator_train__shuffle=True,
                                    max_epochs=1000,
                                    train_split=False,
-                                   device='cuda:0',
-                                   verbose=1)
+                                   device=device,
+                                   verbose=0)
     
     evaluate = _create_evaluator(estimator,
                                  param_grid,
@@ -513,18 +513,18 @@ def _evaluate_handover_rnn(item, signal_type, device):
     
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
-    estimator = NeuralNetRegressor(RNNModule,
+    estimator = NeuralNetClassifier(RNNModule,
                                    module__input_dim=X.shape[2],
-                                   module__output_dim=1,
+                                   module__output_dim=2,
                                    iterator_train__shuffle=True,
                                    max_epochs=1000,
                                    train_split=False,
-                                   device='cuda:0',
-                                   verbose=1)
+                                   device=device,
+                                   verbose=0)
     
     evaluate = _create_evaluator(estimator,
                                  param_grid,
-                                 'neg_mean_absolute_error',
+                                 'accuracy',
                                  ShuffleSplit(n_splits=1, test_size=.25))
     
     return evaluate(X, y)
@@ -638,18 +638,18 @@ def _evaluate_food_rnn(signal_type, device):
     
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
-    estimator = NeuralNetRegressor(RNNModule,
+    estimator = NeuralNetClassifier(RNNModule,
                                    module__input_dim=X.shape[2],
-                                   module__output_dim=1,
+                                   module__output_dim=7,
                                    iterator_train__shuffle=True,
                                    max_epochs=1000,
                                    train_split=False,
-                                   device='cuda:0',
-                                   verbose=1)
+                                   device=device,
+                                   verbose=0)
     
     evaluate = _create_evaluator(estimator,
                                  param_grid,
-                                 'neg_mean_absolute_error',
+                                 'accuracy',
                                  ShuffleSplit(n_splits=1, test_size=.25))
     
     return evaluate(X, y)

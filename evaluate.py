@@ -5,6 +5,7 @@ from sklearn.neural_network import MLPRegressor, MLPClassifier
 from sklearn.svm import SVR, SVC
 
 from skorch import NeuralNetRegressor, NeuralNetClassifier
+import skorch
 
 import torch
 import torch.nn as nn
@@ -237,7 +238,7 @@ class RNNModule(nn.Module):
         
         super(RNNModule, self).__init__()
         
-        self.rnn = nn.LSTM(input_dim, 16, batch_first=True)
+        self.rnn = nn.GRU(input_dim, 16, batch_first=True)
         self.linear1 = nn.Linear(16, 8)
         self.linear2 = nn.Linear(8, output_dim)
 
@@ -365,13 +366,15 @@ def _evaluate_tool_rnn(tool_length, signal_type, device):
     
     X, y = _load_tool(tool_length, signal_type, 'tensor')
     
-    param_grid = { 'lr': [0.001, 0.003, 0.01] }
+    param_grid = { 'lr': [0.001, 0.01, 0.01] }
     
     estimator = NeuralNetRegressor(RNNModule,
                                    module__input_dim=X.shape[2],
                                    module__output_dim=1,
                                    iterator_train__shuffle=True,
-                                   max_epochs=1000,
+                                   optimizer=torch.optim.Adam,
+                                   max_epochs=500,
+                                   batch_size=256,
                                    train_split=False,
                                    device=device,
                                    verbose=0)
@@ -379,7 +382,7 @@ def _evaluate_tool_rnn(tool_length, signal_type, device):
     evaluate = _create_evaluator(estimator,
                                  param_grid,
                                  'neg_mean_absolute_error',
-                                 ShuffleSplit(n_splits=1, test_size=.25))
+                                 ShuffleSplit(n_splits=1, test_size=.2, random_state=0))
     
     return evaluate(X, y)
 
@@ -482,9 +485,7 @@ def _evaluate_handover_svm(item, signal_type, perform_fft, kernel):
 
     X, y = _load_handover(item, signal_type, 'fft' if perform_fft else 'default')
     
-    param_grid = {
-        'C': [1, 3, 10, 30, 100]
-    }
+    param_grid = { 'C': [1, 3, 10, 30, 100] }
     
     estimator = SVC(kernel=kernel, max_iter=5000)
     evaluate = _create_evaluator(estimator, param_grid, 'accuracy', N=20)
@@ -517,7 +518,9 @@ def _evaluate_handover_rnn(item, signal_type, device):
                                    module__input_dim=X.shape[2],
                                    module__output_dim=2,
                                    iterator_train__shuffle=True,
-                                   max_epochs=1000,
+                                   optimizer=torch.optim.Adam,
+                                   max_epochs=500,
+                                   batch_size=256,
                                    train_split=False,
                                    device=device,
                                    verbose=0)
@@ -525,7 +528,7 @@ def _evaluate_handover_rnn(item, signal_type, device):
     evaluate = _create_evaluator(estimator,
                                  param_grid,
                                  'accuracy',
-                                 ShuffleSplit(n_splits=1, test_size=.25))
+                                 ShuffleSplit(n_splits=1, test_size=.2, random_state=0))
     
     return evaluate(X, y)
 
@@ -607,9 +610,7 @@ def _evaluate_food_svm(signal_type, perform_fft, kernel):
 
     X, y = _load_food(signal_type, 'fft' if perform_fft else 'default')
     
-    param_grid = {
-        'C': [1, 3, 10, 30, 100]
-    }
+    param_grid = { 'C': [1, 3, 10, 30, 100] }
     
     estimator = SVC(kernel=kernel, max_iter=5000)
     evaluate = _create_evaluator(estimator, param_grid, 'accuracy', N=20)
@@ -642,7 +643,9 @@ def _evaluate_food_rnn(signal_type, device):
                                    module__input_dim=X.shape[2],
                                    module__output_dim=7,
                                    iterator_train__shuffle=True,
-                                   max_epochs=1000,
+                                   optimizer=torch.optim.Adam,
+                                   max_epochs=500,
+                                   batch_size=256,
                                    train_split=False,
                                    device=device,
                                    verbose=0)
@@ -650,7 +653,7 @@ def _evaluate_food_rnn(signal_type, device):
     evaluate = _create_evaluator(estimator,
                                  param_grid,
                                  'accuracy',
-                                 ShuffleSplit(n_splits=1, test_size=.25))
+                                 ShuffleSplit(n_splits=1, test_size=.2, random_state=0))
     
     return evaluate(X, y)
 

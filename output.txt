@@ -1,0 +1,6 @@
+Iteration 0 | Test Loss = 1.5771
+Iteration 1 | Test Loss = 1.7121
+Iteration 2 | Test Loss = 1.7836
+Iteration 3 | Test Loss = 1.6422
+Iteration 4 | Test Loss = 2.1013
+Result for tool20_neuhalf_kernel_svmlinear: 1.7632 ± 0.1825

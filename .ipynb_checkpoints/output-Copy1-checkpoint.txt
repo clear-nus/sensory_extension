@@ -1,0 +1,12 @@
+Iteration 0 | Test Loss = 2.1827
+Iteration 1 | Test Loss = 1.9385
+Iteration 2 | Test Loss = 2.0399
+Iteration 3 | Test Loss = 2.1678
+Iteration 4 | Test Loss = 1.8490
+Result for tool20_neuhalf_baseline_svmlinear: 2.0356 ± 0.1291
+Iteration 0 | Test Loss = 1.8057
+Iteration 1 | Test Loss = 1.6586
+Iteration 2 | Test Loss = 1.7907
+Iteration 3 | Test Loss = 1.7470
+Iteration 4 | Test Loss = 1.5445
+Result for tool20_neuhalf_baseline_svmrbf: 1.7093 ± 0.0970

@@ -263,7 +263,7 @@ class RNNModule(nn.Module):
 
 def _create_evaluator(estimator, param_grid, scoring, cv=4, N=5, callback=None):
     
-    gs_estimator = GridSearchCV(estimator=estimator, param_grid=param_grid, scoring=scoring, cv=cv, n_jobs=3, refit=True)
+    gs_estimator = GridSearchCV(estimator=estimator, param_grid=param_grid, scoring=scoring, cv=cv, n_jobs=1, refit=True)
     
     def evaluate(X, y, verbose=True):
         
@@ -327,7 +327,7 @@ def _load_tool(tool_length, signal_type, transformation):
         X = torch.Tensor(np.expand_dims(X, 2))
         y = torch.Tensor(np.reshape(y, (-1, 1)))
     
-    if transformation == 'tensor' and signal_type == 'neutouch':
+    if transformation == 'tensor' and (signal_type == 'neutouch' or signal_type == 'neuhalf'):
         
         X = torch.Tensor(np.swapaxes(X, 1, 2))
         y = torch.Tensor(np.reshape(y, (-1, 1)))
@@ -445,19 +445,19 @@ def _load_handover(item, signal_type, transformation):
         
         npzfile = np.load(f'preprocessed/biotac_handover_{item}.npz')
         X = npzfile['signals'] / 1000
-        y = npzfile['labels'][:, 0].astype(np.compat.long)
+        y = npzfile['labels'][:, 0].astype(int)
     
     if signal_type == 'neutouch':
         
         npzfile = np.load(f'preprocessed/neutouch_handover_{item}.npz')
         X = npzfile['signals'] / 40
-        y = npzfile['labels'][:, 0].astype(np.compat.long)
+        y = npzfile['labels'][:, 0].astype(int)
     
     if signal_type == 'neuhalf':
         
         npzfile = np.load(f'preprocessed/neutouch_handover_{item}.npz')
         X = npzfile['signals'][:, 0:40, :] / 40
-        y = npzfile['labels'][:, 0].astype(np.compat.long)
+        y = npzfile['labels'][:, 0].astype(int)
         
     if transformation == 'default':
         
@@ -469,14 +469,14 @@ def _load_handover(item, signal_type, transformation):
         X = np.reshape(X, (X.shape[0], -1))
     
     if transformation == 'tensor' and signal_type == 'biotac':
-    
-        X = torch.Tensor(np.swapaxes(X, 1, 2))
-        y = torch.Tensor(np.reshape(y, (-1, 1)))
-    
-    if transformation == 'tensor' and signal_type == 'neutouch':
         
-        torch.Tensor(np.expand_dims(X, 2))
-        y = torch.Tensor(np.reshape(y, (-1, 1)))
+        X = torch.Tensor(np.expand_dims(X, 2))
+        y = torch.Tensor(np.reshape(y, (-1))).type(torch.long)
+    
+    if transformation == 'tensor' and (signal_type == 'neutouch' or signal_type == 'neuhalf'):
+        
+        X = torch.Tensor(np.swapaxes(X, 1, 2))
+        y = torch.Tensor(np.reshape(y, (-1))).type(torch.long)
     
     return X, y
 
@@ -515,15 +515,16 @@ def _evaluate_handover_rnn(item, signal_type, device):
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
     estimator = NeuralNetClassifier(RNNModule,
-                                   module__input_dim=X.shape[2],
-                                   module__output_dim=2,
-                                   iterator_train__shuffle=True,
-                                   optimizer=torch.optim.Adam,
-                                   max_epochs=500,
-                                   batch_size=256,
-                                   train_split=False,
-                                   device=device,
-                                   verbose=0)
+                                    module__input_dim=X.shape[2],
+                                    module__output_dim=2,
+                                    iterator_train__shuffle=True,
+                                    optimizer=torch.optim.Adam,
+                                    criterion=nn.CrossEntropyLoss,
+                                    max_epochs=500,
+                                    batch_size=256,
+                                    train_split=False,
+                                    device=device,
+                                    verbose=1)
     
     evaluate = _create_evaluator(estimator,
                                  param_grid,
@@ -570,7 +571,7 @@ def _load_food(signal_type, transformation):
                         npzfile3['labels'] * 3,
                         npzfile4['labels'] * 4,
                         npzfile5['labels'] * 5,
-                        npzfile6['labels'] * 6)).astype(np.compat.long)
+                        npzfile6['labels'] * 6)).astype(int)
     
     if signal_type == 'biotac':
         
@@ -595,13 +596,13 @@ def _load_food(signal_type, transformation):
     
     if transformation == 'tensor' and signal_type == 'biotac':
     
-        X = torch.Tensor(np.swapaxes(X, 1, 2))
-        y = torch.Tensor(np.reshape(y, (-1, 1)))
+        X = torch.Tensor(np.expand_dims(X, 2))
+        y = torch.Tensor(np.reshape(y, (-1))).type(torch.long)
     
-    if transformation == 'tensor' and signal_type == 'neutouch':
+    if transformation == 'tensor' and (signal_type == 'neutouch' or signal_type == 'neuhalf'):
         
-        torch.Tensor(np.expand_dims(X, 2))
-        y = torch.Tensor(np.reshape(y, (-1, 1)))
+        X = torch.Tensor(np.swapaxes(X, 1, 2))
+        y = torch.Tensor(np.reshape(y, (-1))).type(torch.long)
     
     return X, y
 

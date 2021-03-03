@@ -5,9 +5,9 @@
 # python evaluate.py tool20_biotac_fft_svmlinear
 # python evaluate.py tool20_biotac_fft_svmrbf
 # python evaluate.py tool20_biotac_fft_mlp
-# python evaluate.py tool20_biotac_autoencoder_svmlinear
-# python evaluate.py tool20_biotac_autoencoder_svmrbf
-# python evaluate.py tool20_biotac_autoencoder_mlp
+python evaluate.py tool20_biotac_autoencoder_svmlinear
+python evaluate.py tool20_biotac_autoencoder_svmrbf
+python evaluate.py tool20_biotac_autoencoder_mlp
 
 # python evaluate.py tool20_neutouch_baseline_svmlinear
 # python evaluate.py tool20_neutouch_baseline_svmrbf
@@ -16,9 +16,9 @@
 # python evaluate.py tool20_neutouch_fft_svmlinear
 # python evaluate.py tool20_neutouch_fft_svmrbf
 # python evaluate.py tool20_neutouch_fft_mlp
-# python evaluate.py tool20_neutouch_autoencoder_svmlinear
-# python evaluate.py tool20_neutouch_autoencoder_svmrbf
-# python evaluate.py tool20_neutouch_autoencoder_mlp
+python evaluate.py tool20_neutouch_autoencoder_svmlinear
+python evaluate.py tool20_neutouch_autoencoder_svmrbf
+python evaluate.py tool20_neutouch_autoencoder_mlp
 
 # python evaluate.py tool20_neuhalf_baseline_svmlinear
 # python evaluate.py tool20_neuhalf_baseline_svmrbf
@@ -35,9 +35,9 @@
 # python evaluate.py tool30_biotac_fft_svmlinear
 # python evaluate.py tool30_biotac_fft_svmrbf
 # python evaluate.py tool30_biotac_fft_mlp
-# python evaluate.py tool30_biotac_autoencoder_svmlinear
-# python evaluate.py tool30_biotac_autoencoder_svmrbf
-# python evaluate.py tool30_biotac_autoencoder_mlp
+python evaluate.py tool30_biotac_autoencoder_svmlinear
+python evaluate.py tool30_biotac_autoencoder_svmrbf
+python evaluate.py tool30_biotac_autoencoder_mlp
 
 # python evaluate.py tool30_neutouch_baseline_svmlinear
 # python evaluate.py tool30_neutouch_baseline_svmrbf
@@ -46,9 +46,9 @@
 # python evaluate.py tool30_neutouch_fft_svmlinear
 # python evaluate.py tool30_neutouch_fft_svmrbf
 # python evaluate.py tool30_neutouch_fft_mlp
-# python evaluate.py tool30_neutouch_autoencoder_svmlinear
-# python evaluate.py tool30_neutouch_autoencoder_svmrbf
-# python evaluate.py tool30_neutouch_autoencoder_mlp
+python evaluate.py tool30_neutouch_autoencoder_svmlinear
+python evaluate.py tool30_neutouch_autoencoder_svmrbf
+python evaluate.py tool30_neutouch_autoencoder_mlp
 
 # python evaluate.py tool30_neuhalf_baseline_svmlinear
 # python evaluate.py tool30_neuhalf_baseline_svmrbf
@@ -65,9 +65,9 @@
 # python evaluate.py tool50_biotac_fft_svmlinear
 # python evaluate.py tool50_biotac_fft_svmrbf
 # python evaluate.py tool50_biotac_fft_mlp
-# python evaluate.py tool50_biotac_autoencoder_svmlinear
-# python evaluate.py tool50_biotac_autoencoder_svmrbf
-# python evaluate.py tool50_biotac_autoencoder_mlp
+python evaluate.py tool50_biotac_autoencoder_svmlinear
+python evaluate.py tool50_biotac_autoencoder_svmrbf
+python evaluate.py tool50_biotac_autoencoder_mlp
 
 # python evaluate.py tool50_neutouch_baseline_svmlinear
 # python evaluate.py tool50_neutouch_baseline_svmrbf
@@ -76,9 +76,9 @@
 # python evaluate.py tool50_neutouch_fft_svmlinear
 # python evaluate.py tool50_neutouch_fft_svmrbf
 # python evaluate.py tool50_neutouch_fft_mlp
-# python evaluate.py tool50_neutouch_autoencoder_svmlinear
-# python evaluate.py tool50_neutouch_autoencoder_svmrbf
-# python evaluate.py tool50_neutouch_autoencoder_mlp
+python evaluate.py tool50_neutouch_autoencoder_svmlinear
+python evaluate.py tool50_neutouch_autoencoder_svmrbf
+python evaluate.py tool50_neutouch_autoencoder_mlp
 
 # python evaluate.py tool50_neuhalf_baseline_svmlinear
 # python evaluate.py tool50_neuhalf_baseline_svmrbf

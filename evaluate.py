@@ -16,101 +16,101 @@ def evaluate(experiment_name, device='cuda'):
     
     experiments = {
         
-        'tool20_biotac_baseline_svmlinear'                 : partial(_evaluate_tool_svm, 20, 'biotac', False, 'linear'),
-        'tool20_biotac_baseline_svmrbf'                    : partial(_evaluate_tool_svm, 20, 'biotac', False, 'rbf'),
-        'tool20_biotac_baseline_mlp'                       : partial(_evaluate_tool_mlp, 20, 'biotac', False),
+        'tool20_biotac_baseline_svmlinear'                 : partial(_evaluate_tool_svm, 20, 'biotac', 'default', 'linear'),
+        'tool20_biotac_baseline_svmrbf'                    : partial(_evaluate_tool_svm, 20, 'biotac', 'default', 'rbf'),
+        'tool20_biotac_baseline_mlp'                       : partial(_evaluate_tool_mlp, 20, 'biotac', 'default'),
         'tool20_biotac_baseline_rnn'                       : partial(_evaluate_tool_rnn, 20, 'biotac', device),
-        'tool20_biotac_fft_svmlinear'                      : partial(_evaluate_tool_svm, 20, 'biotac', True, 'linear'),
-        'tool20_biotac_fft_svmrbf'                         : partial(_evaluate_tool_svm, 20, 'biotac', True, 'rbf'),
-        'tool20_biotac_fft_mlp'                            : partial(_evaluate_tool_mlp, 20, 'biotac', True),
+        'tool20_biotac_fft_svmlinear'                      : partial(_evaluate_tool_svm, 20, 'biotac', 'fft', 'linear'),
+        'tool20_biotac_fft_svmrbf'                         : partial(_evaluate_tool_svm, 20, 'biotac', 'fft', 'rbf'),
+        'tool20_biotac_fft_mlp'                            : partial(_evaluate_tool_mlp, 20, 'biotac', 'fft'),
         
-        'tool20_neutouch_baseline_svmlinear'               : partial(_evaluate_tool_svm, 20, 'neutouch', False, 'linear'),
-        'tool20_neutouch_baseline_svmrbf'                  : partial(_evaluate_tool_svm, 20, 'neutouch', False, 'rbf'),
-        'tool20_neutouch_baseline_mlp'                     : partial(_evaluate_tool_mlp, 20, 'neutouch', False),
+        'tool20_neutouch_baseline_svmlinear'               : partial(_evaluate_tool_svm, 20, 'neutouch', 'default', 'linear'),
+        'tool20_neutouch_baseline_svmrbf'                  : partial(_evaluate_tool_svm, 20, 'neutouch', 'default', 'rbf'),
+        'tool20_neutouch_baseline_mlp'                     : partial(_evaluate_tool_mlp, 20, 'neutouch', 'default'),
         'tool20_neutouch_baseline_rnn'                     : partial(_evaluate_tool_rnn, 20, 'neutouch', device),
-        'tool20_neutouch_fft_svmlinear'                    : partial(_evaluate_tool_svm, 20, 'neutouch', True, 'linear'),
-        'tool20_neutouch_fft_svmrbf'                       : partial(_evaluate_tool_svm, 20, 'neutouch', True, 'rbf'),
-        'tool20_neutouch_fft_mlp'                          : partial(_evaluate_tool_mlp, 20, 'neutouch', True),
+        'tool20_neutouch_fft_svmlinear'                    : partial(_evaluate_tool_svm, 20, 'neutouch', 'fft', 'linear'),
+        'tool20_neutouch_fft_svmrbf'                       : partial(_evaluate_tool_svm, 20, 'neutouch', 'fft', 'rbf'),
+        'tool20_neutouch_fft_mlp'                          : partial(_evaluate_tool_mlp, 20, 'neutouch', 'fft'),
         
-        'tool20_neuhalf_baseline_svmlinear'                : partial(_evaluate_tool_svm, 20, 'neuhalf', False, 'linear'),
-        'tool20_neuhalf_baseline_svmrbf'                   : partial(_evaluate_tool_svm, 20, 'neuhalf', False, 'rbf'),
-        'tool20_neuhalf_baseline_mlp'                      : partial(_evaluate_tool_mlp, 20, 'neuhalf', False),
+        'tool20_neuhalf_baseline_svmlinear'                : partial(_evaluate_tool_svm, 20, 'neuhalf', 'default', 'linear'),
+        'tool20_neuhalf_baseline_svmrbf'                   : partial(_evaluate_tool_svm, 20, 'neuhalf', 'default', 'rbf'),
+        'tool20_neuhalf_baseline_mlp'                      : partial(_evaluate_tool_mlp, 20, 'neuhalf', 'default'),
         'tool20_neuhalf_baseline_rnn'                      : partial(_evaluate_tool_rnn, 20, 'neuhalf', device),
-        'tool20_neuhalf_fft_svmlinear'                     : partial(_evaluate_tool_svm, 20, 'neuhalf', True, 'linear'),
-        'tool20_neuhalf_fft_svmrbf'                        : partial(_evaluate_tool_svm, 20, 'neuhalf', True, 'rbf'),
-        'tool20_neuhalf_fft_mlp'                           : partial(_evaluate_tool_mlp, 20, 'neuhalf', True),
+        'tool20_neuhalf_fft_svmlinear'                     : partial(_evaluate_tool_svm, 20, 'neuhalf', 'fft', 'linear'),
+        'tool20_neuhalf_fft_svmrbf'                        : partial(_evaluate_tool_svm, 20, 'neuhalf', 'fft', 'rbf'),
+        'tool20_neuhalf_fft_mlp'                           : partial(_evaluate_tool_mlp, 20, 'neuhalf', 'fft'),
         
-        'tool30_biotac_baseline_svmlinear'                 : partial(_evaluate_tool_svm, 30, 'biotac', False, 'linear'),
-        'tool30_biotac_baseline_svmrbf'                    : partial(_evaluate_tool_svm, 30, 'biotac', False, 'rbf'),
-        'tool30_biotac_baseline_mlp'                       : partial(_evaluate_tool_mlp, 30, 'biotac', False),
+        'tool30_biotac_baseline_svmlinear'                 : partial(_evaluate_tool_svm, 30, 'biotac', 'default', 'linear'),
+        'tool30_biotac_baseline_svmrbf'                    : partial(_evaluate_tool_svm, 30, 'biotac', 'default', 'rbf'),
+        'tool30_biotac_baseline_mlp'                       : partial(_evaluate_tool_mlp, 30, 'biotac', 'default'),
         'tool30_biotac_baseline_rnn'                       : partial(_evaluate_tool_rnn, 30, 'biotac', device),
-        'tool30_biotac_fft_svmlinear'                      : partial(_evaluate_tool_svm, 30, 'biotac', True, 'linear'),
-        'tool30_biotac_fft_svmrbf'                         : partial(_evaluate_tool_svm, 30, 'biotac', True, 'rbf'),
-        'tool30_biotac_fft_mlp'                            : partial(_evaluate_tool_mlp, 30, 'biotac', True),
+        'tool30_biotac_fft_svmlinear'                      : partial(_evaluate_tool_svm, 30, 'biotac', 'fft', 'linear'),
+        'tool30_biotac_fft_svmrbf'                         : partial(_evaluate_tool_svm, 30, 'biotac', 'fft', 'rbf'),
+        'tool30_biotac_fft_mlp'                            : partial(_evaluate_tool_mlp, 30, 'biotac', 'fft'),
         
-        'tool30_neutouch_baseline_svmlinear'               : partial(_evaluate_tool_svm, 30, 'neutouch', False, 'linear'),
-        'tool30_neutouch_baseline_svmrbf'                  : partial(_evaluate_tool_svm, 30, 'neutouch', False, 'rbf'),
-        'tool30_neutouch_baseline_mlp'                     : partial(_evaluate_tool_mlp, 30, 'neutouch', False),
+        'tool30_neutouch_baseline_svmlinear'               : partial(_evaluate_tool_svm, 30, 'neutouch', 'default', 'linear'),
+        'tool30_neutouch_baseline_svmrbf'                  : partial(_evaluate_tool_svm, 30, 'neutouch', 'default', 'rbf'),
+        'tool30_neutouch_baseline_mlp'                     : partial(_evaluate_tool_mlp, 30, 'neutouch', 'default'),
         'tool30_neutouch_baseline_rnn'                     : partial(_evaluate_tool_rnn, 30, 'neutouch', device),
-        'tool30_neutouch_fft_svmlinear'                    : partial(_evaluate_tool_svm, 30, 'neutouch', True, 'linear'),
-        'tool30_neutouch_fft_svmrbf'                       : partial(_evaluate_tool_svm, 30, 'neutouch', True, 'rbf'),
-        'tool30_neutouch_fft_mlp'                          : partial(_evaluate_tool_mlp, 30, 'neutouch', True),
+        'tool30_neutouch_fft_svmlinear'                    : partial(_evaluate_tool_svm, 30, 'neutouch', 'fft', 'linear'),
+        'tool30_neutouch_fft_svmrbf'                       : partial(_evaluate_tool_svm, 30, 'neutouch', 'fft', 'rbf'),
+        'tool30_neutouch_fft_mlp'                          : partial(_evaluate_tool_mlp, 30, 'neutouch', 'fft'),
         
-        'tool30_neuhalf_baseline_svmlinear'                : partial(_evaluate_tool_svm, 30, 'neuhalf', False, 'linear'),
-        'tool30_neuhalf_baseline_svmrbf'                   : partial(_evaluate_tool_svm, 30, 'neuhalf', False, 'rbf'),
-        'tool30_neuhalf_baseline_mlp'                      : partial(_evaluate_tool_mlp, 30, 'neuhalf', False),
+        'tool30_neuhalf_baseline_svmlinear'                : partial(_evaluate_tool_svm, 30, 'neuhalf', 'default', 'linear'),
+        'tool30_neuhalf_baseline_svmrbf'                   : partial(_evaluate_tool_svm, 30, 'neuhalf', 'default', 'rbf'),
+        'tool30_neuhalf_baseline_mlp'                      : partial(_evaluate_tool_mlp, 30, 'neuhalf', 'default'),
         'tool30_neuhalf_baseline_rnn'                      : partial(_evaluate_tool_rnn, 30, 'neuhalf', device),
-        'tool30_neuhalf_fft_svmlinear'                     : partial(_evaluate_tool_svm, 30, 'neuhalf', True, 'linear'),
-        'tool30_neuhalf_fft_svmrbf'                        : partial(_evaluate_tool_svm, 30, 'neuhalf', True, 'rbf'),
-        'tool30_neuhalf_fft_mlp'                           : partial(_evaluate_tool_mlp, 30, 'neuhalf', True),
+        'tool30_neuhalf_fft_svmlinear'                     : partial(_evaluate_tool_svm, 30, 'neuhalf', 'fft', 'linear'),
+        'tool30_neuhalf_fft_svmrbf'                        : partial(_evaluate_tool_svm, 30, 'neuhalf', 'fft', 'rbf'),
+        'tool30_neuhalf_fft_mlp'                           : partial(_evaluate_tool_mlp, 30, 'neuhalf', 'fft'),
         
-        'tool50_biotac_baseline_svmlinear'                 : partial(_evaluate_tool_svm, 50, 'biotac', False, 'linear'),
-        'tool50_biotac_baseline_svmrbf'                    : partial(_evaluate_tool_svm, 50, 'biotac', False, 'rbf'),
-        'tool50_biotac_baseline_mlp'                       : partial(_evaluate_tool_mlp, 50, 'biotac', False),
+        'tool50_biotac_baseline_svmlinear'                 : partial(_evaluate_tool_svm, 50, 'biotac', 'default', 'linear'),
+        'tool50_biotac_baseline_svmrbf'                    : partial(_evaluate_tool_svm, 50, 'biotac', 'default', 'rbf'),
+        'tool50_biotac_baseline_mlp'                       : partial(_evaluate_tool_mlp, 50, 'biotac', 'default'),
         'tool50_biotac_baseline_rnn'                       : partial(_evaluate_tool_rnn, 50, 'biotac', device),
-        'tool50_biotac_fft_svmlinear'                      : partial(_evaluate_tool_svm, 50, 'biotac', True, 'linear'),
-        'tool50_biotac_fft_svmrbf'                         : partial(_evaluate_tool_svm, 50, 'biotac', True, 'rbf'),
-        'tool50_biotac_fft_mlp'                            : partial(_evaluate_tool_mlp, 50, 'biotac', True),
+        'tool50_biotac_fft_svmlinear'                      : partial(_evaluate_tool_svm, 50, 'biotac', 'fft', 'linear'),
+        'tool50_biotac_fft_svmrbf'                         : partial(_evaluate_tool_svm, 50, 'biotac', 'fft', 'rbf'),
+        'tool50_biotac_fft_mlp'                            : partial(_evaluate_tool_mlp, 50, 'biotac', 'fft'),
         
-        'tool50_neutouch_baseline_svmlinear'               : partial(_evaluate_tool_svm, 50, 'neutouch', False, 'linear'),
-        'tool50_neutouch_baseline_svmrbf'                  : partial(_evaluate_tool_svm, 50, 'neutouch', False, 'rbf'),
-        'tool50_neutouch_baseline_mlp'                     : partial(_evaluate_tool_mlp, 50, 'neutouch', False),
+        'tool50_neutouch_baseline_svmlinear'               : partial(_evaluate_tool_svm, 50, 'neutouch', 'default', 'linear'),
+        'tool50_neutouch_baseline_svmrbf'                  : partial(_evaluate_tool_svm, 50, 'neutouch', 'default', 'rbf'),
+        'tool50_neutouch_baseline_mlp'                     : partial(_evaluate_tool_mlp, 50, 'neutouch', 'default'),
         'tool50_neutouch_baseline_rnn'                     : partial(_evaluate_tool_rnn, 50, 'neutouch', device),
-        'tool50_neutouch_fft_svmlinear'                    : partial(_evaluate_tool_svm, 50, 'neutouch', True, 'linear'),
-        'tool50_neutouch_fft_svmrbf'                       : partial(_evaluate_tool_svm, 50, 'neutouch', True, 'rbf'),
-        'tool50_neutouch_fft_mlp'                          : partial(_evaluate_tool_mlp, 50, 'neutouch', True),
+        'tool50_neutouch_fft_svmlinear'                    : partial(_evaluate_tool_svm, 50, 'neutouch', 'fft', 'linear'),
+        'tool50_neutouch_fft_svmrbf'                       : partial(_evaluate_tool_svm, 50, 'neutouch', 'fft', 'rbf'),
+        'tool50_neutouch_fft_mlp'                          : partial(_evaluate_tool_mlp, 50, 'neutouch', 'fft'),
         
-        'tool50_neuhalf_baseline_svmlinear'                : partial(_evaluate_tool_svm, 50, 'neuhalf', False, 'linear'),
-        'tool50_neuhalf_baseline_svmrbf'                   : partial(_evaluate_tool_svm, 50, 'neuhalf', False, 'rbf'),
-        'tool50_neuhalf_baseline_mlp'                      : partial(_evaluate_tool_mlp, 50, 'neuhalf', False),
+        'tool50_neuhalf_baseline_svmlinear'                : partial(_evaluate_tool_svm, 50, 'neuhalf', 'default', 'linear'),
+        'tool50_neuhalf_baseline_svmrbf'                   : partial(_evaluate_tool_svm, 50, 'neuhalf', 'default', 'rbf'),
+        'tool50_neuhalf_baseline_mlp'                      : partial(_evaluate_tool_mlp, 50, 'neuhalf', 'default'),
         'tool50_neuhalf_baseline_rnn'                      : partial(_evaluate_tool_rnn, 50, 'neuhalf', device),
-        'tool50_neuhalf_fft_svmlinear'                     : partial(_evaluate_tool_svm, 50, 'neuhalf', True, 'linear'),
-        'tool50_neuhalf_fft_svmrbf'                        : partial(_evaluate_tool_svm, 50, 'neuhalf', True, 'rbf'),
-        'tool50_neuhalf_fft_mlp'                           : partial(_evaluate_tool_mlp, 50, 'neuhalf', True),
+        'tool50_neuhalf_fft_svmlinear'                     : partial(_evaluate_tool_svm, 50, 'neuhalf', 'fft', 'linear'),
+        'tool50_neuhalf_fft_svmrbf'                        : partial(_evaluate_tool_svm, 50, 'neuhalf', 'fft', 'rbf'),
+        'tool50_neuhalf_fft_mlp'                           : partial(_evaluate_tool_mlp, 50, 'neuhalf', 'fft'),
         
-        'tool20_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_aesvm, 20, 'linear'),
-        'tool20_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_aesvm, 20, 'rbf'),
-        'tool20_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_aemlp, 20),
+        'tool20_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_svm, 20, 'neutouch', 'autoencoder', 'linear'),
+        'tool20_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_svm, 20, 'neutouch', 'autoencoder', 'rbf'),
+        'tool20_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_mlp, 20, 'neutouch', 'autoencoder'),
         
-        'tool20_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_aesvm, 20, 'linear'),
-        'tool20_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_aesvm, 20, 'rbf'),
-        'tool20_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_aemlp, 20),
+        'tool20_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_svm, 20, 'biotac', 'autoencoder', 'linear'),
+        'tool20_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_svm, 20, 'biotac', 'autoencoder', 'rbf'),
+        'tool20_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_mlp, 20, 'biotac', 'autoencoder'),
         
-        'tool30_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_aesvm, 30, 'linear'),
-        'tool30_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_aesvm, 30, 'rbf'),
-        'tool30_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_aemlp, 30),
+        'tool30_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_svm, 30, 'neutouch', 'autoencoder', 'linear'),
+        'tool30_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_svm, 30, 'neutouch', 'autoencoder', 'rbf'),
+        'tool30_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_mlp, 30, 'neutouch', 'autoencoder'),
         
-        'tool30_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_aesvm, 30, 'linear'),
-        'tool30_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_aesvm, 30, 'rbf'),
-        'tool30_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_aemlp, 30),
+        'tool30_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_svm, 30, 'biotac', 'autoencoder', 'linear'),
+        'tool30_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_svm, 30, 'biotac', 'autoencoder', 'rbf'),
+        'tool30_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_mlp, 30, 'biotac', 'autoencoder'),
         
-        'tool50_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_aesvm, 50, 'linear'),
-        'tool50_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_aesvm, 50, 'rbf'),
-        'tool50_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_aemlp, 50),
+        'tool50_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_svm, 50, 'neutouch', 'autoencoder', 'linear'),
+        'tool50_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_svm, 50, 'neutouch', 'autoencoder', 'rbf'),
+        'tool50_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_mlp, 50, 'neutouch', 'autoencoder'),
         
-        'tool50_neutouch_autoencoder_svmlinear'            : partial(_evaluate_tool_aesvm, 50, 'linear'),
-        'tool50_neutouch_autoencoder_svmrbf'               : partial(_evaluate_tool_aesvm, 50, 'rbf'),
-        'tool50_neutouch_autoencoder_mlp'                  : partial(_evaluate_tool_aemlp, 50),
+        'tool50_biotac_autoencoder_svmlinear'              : partial(_evaluate_tool_svm, 50, 'biotac', 'autoencoder', 'linear'),
+        'tool50_biotac_autoencoder_svmrbf'                 : partial(_evaluate_tool_svm, 50, 'biotac', 'autoencoder', 'rbf'),
+        'tool50_biotac_autoencoder_mlp'                    : partial(_evaluate_tool_mlp, 50, 'biotac', 'autoencoder'),
         
         'tool20_neusingle_baseline_svmlinear'              : partial(_evaluate_tool_neusingle_svm, 20, 'linear', False),
         'tool20_neusingle_baseline_svmrbf'                 : partial(_evaluate_tool_neusingle_svm, 20, 'rbf', False),
@@ -230,6 +230,7 @@ def evaluate(experiment_name, device='cuda'):
     test_loss_mean, test_loss_std = experiments[experiment_name]()
     
     print('Result for {:s}: {:0.4f} ± {:0.4f}'.format(experiment_name, test_loss_mean, test_loss_std))
+    print()
 
     
 class RNNModule(nn.Module):
@@ -263,7 +264,7 @@ class RNNModule(nn.Module):
 
 def _create_evaluator(estimator, param_grid, scoring, cv=4, N=5, callback=None):
     
-    gs_estimator = GridSearchCV(estimator=estimator, param_grid=param_grid, scoring=scoring, cv=cv, n_jobs=1, refit=True)
+    gs_estimator = GridSearchCV(estimator=estimator, param_grid=param_grid, scoring=scoring, cv=cv, n_jobs=3, refit=True)
     
     def evaluate(X, y, verbose=True):
         
@@ -277,7 +278,7 @@ def _create_evaluator(estimator, param_grid, scoring, cv=4, N=5, callback=None):
             test_losses[n] = test_loss
             
             if callback is not None: callback(gs_estimator, X_test, y_test)
-            if verbose: print('Iteration {:d} | Test Loss = {:0.4f}'.format(n, test_loss))
+            if verbose: print('Iteration {:02d} | Test Loss = {:0.4f}'.format(n, test_loss))
 
         return np.mean(test_losses), np.std(test_losses)
 
@@ -316,6 +317,10 @@ def _load_tool(tool_length, signal_type, transformation):
     if transformation == 'default':
         
         X = np.reshape(X, (X.shape[0], -1))
+        
+    if transformation == 'autoencoder':
+        
+        X = np.load(f'autoencoder/{signal_type}_tool_{tool_length}.npy')
     
     if transformation == 'fft':
         
@@ -335,9 +340,9 @@ def _load_tool(tool_length, signal_type, transformation):
     return X, y
 
 
-def _evaluate_tool_svm(tool_length, signal_type, perform_fft, kernel):
+def _evaluate_tool_svm(tool_length, signal_type, transformation, kernel):
 
-    X, y = _load_tool(tool_length, signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_tool(tool_length, signal_type, transformation)
     
     param_grid = { 'C': [1, 3, 10, 30, 100] }
     
@@ -347,9 +352,9 @@ def _evaluate_tool_svm(tool_length, signal_type, perform_fft, kernel):
     return evaluate(X, y)
 
 
-def _evaluate_tool_mlp(tool_length, signal_type, perform_fft):
+def _evaluate_tool_mlp(tool_length, signal_type, transformation):
 
-    X, y = _load_tool(tool_length, signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_tool(tool_length, signal_type, transformation)
     
     param_grid = {
         'learning_rate_init': [0.01, 0.03, 0.1, 0.3],
@@ -385,16 +390,6 @@ def _evaluate_tool_rnn(tool_length, signal_type, device):
                                  ShuffleSplit(n_splits=1, test_size=.2, random_state=0))
     
     return evaluate(X, y)
-
-
-def _evaluate_tool_aesvm(tool_length, kernel):
-
-    pass
-
-
-def _evaluate_tool_aemlp(tool_length):
-
-    pass
 
 
 def _evaluate_tool_neusingle_svm(tool_length, kernel, perform_fft):
@@ -524,7 +519,7 @@ def _evaluate_handover_rnn(item, signal_type, device):
                                     batch_size=256,
                                     train_split=False,
                                     device=device,
-                                    verbose=1)
+                                    verbose=0)
     
     evaluate = _create_evaluator(estimator,
                                  param_grid,
@@ -575,11 +570,16 @@ def _load_food(signal_type, transformation):
     
     if signal_type == 'biotac':
         
-        X = X / 1000
+        print(X.shape)
+        X = X[:, 400:800] / 1000
+        print(X.shape)
     
     if signal_type == 'neutouch':
         
+        print(X.shape)
         X = X / 40
+        X = X[:, :, 30:90]
+        print(X.shape)
     
     if signal_type == 'neuhalf':
         
@@ -645,6 +645,7 @@ def _evaluate_food_rnn(signal_type, device):
                                    module__output_dim=7,
                                    iterator_train__shuffle=True,
                                    optimizer=torch.optim.Adam,
+                                   criterion=nn.CrossEntropyLoss,
                                    max_epochs=500,
                                    batch_size=256,
                                    train_split=False,

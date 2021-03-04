@@ -1,0 +1,6 @@
+Iteration 0 | Test Loss = 1.4085
+Iteration 1 | Test Loss = 1.5672
+Iteration 2 | Test Loss = 1.4986
+Iteration 3 | Test Loss = 1.4238
+Iteration 4 | Test Loss = 1.7319
+Result for kernel_regression_rodTap_20_4000_all_svrlinear: 1.5260 ± 0.1176

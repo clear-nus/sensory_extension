@@ -232,7 +232,7 @@ def evaluate(experiment_name, frequency, device='cuda'):
     
     test_loss_mean, test_loss_std = experiments[experiment_name](frequency)
     
-    print('Result for {:s}: {:0.4f} ± {:0.4f}'.format(experiment_name, test_loss_mean, test_loss_std))
+    print('Result for {:s} ({:4d} Hz): {:0.4f} ± {:0.4f}'.format(experiment_name, frequency, test_loss_mean, test_loss_std))
     print()
 
     
@@ -347,9 +347,9 @@ def _load_tool(tool_length, signal_type, transformation, frequency):
     return X, y
 
 
-def _evaluate_tool_svm(tool_length, signal_type, transformation, kernel):
+def _evaluate_tool_svm(tool_length, signal_type, transformation, kernel, frequency):
 
-    X, y = _load_tool(tool_length, signal_type, transformation)
+    X, y = _load_tool(tool_length, signal_type, transformation, frequency)
     
     param_grid = { 'C': [1, 3, 10, 30, 100] }
     
@@ -359,9 +359,9 @@ def _evaluate_tool_svm(tool_length, signal_type, transformation, kernel):
     return evaluate(X, y)
 
 
-def _evaluate_tool_mlp(tool_length, signal_type, transformation):
+def _evaluate_tool_mlp(tool_length, signal_type, transformation, frequency):
 
-    X, y = _load_tool(tool_length, signal_type, transformation)
+    X, y = _load_tool(tool_length, signal_type, transformation, frequency)
     
     param_grid = {
         'learning_rate_init': [0.01, 0.03, 0.1, 0.3],
@@ -374,9 +374,9 @@ def _evaluate_tool_mlp(tool_length, signal_type, transformation):
     return evaluate(X, y)
 
 
-def _evaluate_tool_rnn(tool_length, signal_type, device):
+def _evaluate_tool_rnn(tool_length, signal_type, device, frequency):
     
-    X, y = _load_tool(tool_length, signal_type, 'tensor')
+    X, y = _load_tool(tool_length, signal_type, 'tensor', frequency)
     
     param_grid = { 'lr': [0.001, 0.01, 0.01] }
     
@@ -399,9 +399,9 @@ def _evaluate_tool_rnn(tool_length, signal_type, device):
     return evaluate(X, y)
 
 
-def _evaluate_tool_neusingle_svm(tool_length, kernel, perform_fft):
+def _evaluate_tool_neusingle_svm(tool_length, kernel, perform_fft, frequency):
 
-    X, y = _load_tool(tool_length, 'neutouch', 'fft' if perform_fft else 'default')
+    X, y = _load_tool(tool_length, 'neutouch', 'fft' if perform_fft else 'default', frequency)
     X = np.reshape(X, (X.shape[0], 80, -1))
 
     best_taxel = 0
@@ -441,7 +441,7 @@ def _evaluate_tool_neusingle_svm(tool_length, kernel, perform_fft):
 #                                                               | |                                             
 
 
-def _load_handover(item, signal_type, transformation):
+def _load_handover(item, signal_type, transformation, frequency):
     
     if signal_type == 'biotac':
         
@@ -487,9 +487,9 @@ def _load_handover(item, signal_type, transformation):
     return X, y
 
 
-def _evaluate_handover_svm(item, signal_type, perform_fft, kernel):
+def _evaluate_handover_svm(item, signal_type, perform_fft, kernel, frequency):
 
-    X, y = _load_handover(item, signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_handover(item, signal_type, 'fft' if perform_fft else 'default', frequency)
     
     param_grid = { 'C': [1, 3, 10, 30, 100] }
     
@@ -499,9 +499,9 @@ def _evaluate_handover_svm(item, signal_type, perform_fft, kernel):
     return evaluate(X, y)
 
 
-def _evaluate_handover_mlp(item, signal_type, perform_fft):
+def _evaluate_handover_mlp(item, signal_type, perform_fft, frequency):
 
-    X, y = _load_handover(item, signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_handover(item, signal_type, 'fft' if perform_fft else 'default', frequency)
     
     param_grid = {
         'learning_rate_init': [0.01, 0.03, 0.1, 0.3],
@@ -514,9 +514,9 @@ def _evaluate_handover_mlp(item, signal_type, perform_fft):
     return evaluate(X, y)
 
 
-def _evaluate_handover_rnn(item, signal_type, device):
+def _evaluate_handover_rnn(item, signal_type, device, frequency):
 
-    X, y = _load_handover(item, signal_type, 'tensor')
+    X, y = _load_handover(item, signal_type, 'tensor', frequency)
     
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
@@ -549,7 +549,7 @@ def _evaluate_handover_rnn(item, signal_type, device):
 #                                        | |                                             
 
 
-def _load_food(signal_type, transformation):
+def _load_food(signal_type, transformation, frequency):
     
     classes = [ 'empty', 'water', 'tofu', 'watermelon', 'banana', 'apple', 'pepper' ]
     
@@ -623,9 +623,9 @@ def _load_food(signal_type, transformation):
     return X, y
 
 
-def _evaluate_food_svm(signal_type, perform_fft, kernel):
+def _evaluate_food_svm(signal_type, perform_fft, kernel, frequency):
 
-    X, y = _load_food(signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_food(signal_type, 'fft' if perform_fft else 'default', frequency)
     
     param_grid = { 'C': [1, 3, 10, 30, 100] }
     
@@ -635,9 +635,9 @@ def _evaluate_food_svm(signal_type, perform_fft, kernel):
     return evaluate(X, y)
 
 
-def _evaluate_food_mlp(signal_type, perform_fft):
+def _evaluate_food_mlp(signal_type, perform_fft, frequency):
 
-    X, y = _load_food(signal_type, 'fft' if perform_fft else 'default')
+    X, y = _load_food(signal_type, 'fft' if perform_fft else 'default', frequency)
     
     param_grid = {
         'learning_rate_init': [0.01, 0.03, 0.1, 0.3],
@@ -650,9 +650,9 @@ def _evaluate_food_mlp(signal_type, perform_fft):
     return evaluate(X, y)
 
 
-def _evaluate_food_rnn(signal_type, device):
+def _evaluate_food_rnn(signal_type, device, frequency):
 
-    X, y = _load_food(signal_type, 'tensor')
+    X, y = _load_food(signal_type, 'tensor', frequency)
     
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     

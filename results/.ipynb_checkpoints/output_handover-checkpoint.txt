@@ -64,6 +64,13 @@ Iteration 18 | Test Loss = -0.4167
 Iteration 19 | Test Loss = -0.5833
 Result for handoverrod_biotac_baseline_mlp: -0.5667 ± 0.1434
 
+Iteration 00 | Test Loss = -0.5000
+Iteration 01 | Test Loss = -0.6667
+Iteration 02 | Test Loss = -0.5000
+Iteration 03 | Test Loss = -0.2500
+Iteration 04 | Test Loss = -0.5833
+Result for handoverrod_biotac_baseline_rnn: -0.5000 ± 0.1394
+
 Iteration 00 | Test Loss = -0.5833
 Iteration 01 | Test Loss = -0.6667
 Iteration 02 | Test Loss = -0.5833
@@ -198,6 +205,13 @@ Result for handoverrod_neutouch_baseline_mlp: -0.4000 ± 0.1164
 
 Iteration 00 | Test Loss = -0.5455
 Iteration 01 | Test Loss = -0.5455
+Iteration 02 | Test Loss = -0.4545
+Iteration 03 | Test Loss = -0.5455
+Iteration 04 | Test Loss = -0.4545
+Result for handoverrod_neutouch_baseline_rnn: -0.5091 ± 0.0445
+
+Iteration 00 | Test Loss = -0.5455
+Iteration 01 | Test Loss = -0.5455
 Iteration 02 | Test Loss = -0.6364
 Iteration 03 | Test Loss = -0.4545
 Iteration 04 | Test Loss = -0.7273
@@ -327,6 +341,13 @@ Iteration 17 | Test Loss = -0.3636
 Iteration 18 | Test Loss = -0.4545
 Iteration 19 | Test Loss = -0.5455
 Result for handoverrod_neuhalf_baseline_mlp: -0.4455 ± 0.1182
+
+Iteration 00 | Test Loss = -0.4545
+Iteration 01 | Test Loss = -0.2727
+Iteration 02 | Test Loss = -0.8182
+Iteration 03 | Test Loss = -0.5455
+Iteration 04 | Test Loss = -0.5455
+Result for handoverrod_neuhalf_baseline_rnn: -0.5273 ± 0.1763
 
 Iteration 00 | Test Loss = -0.4545
 Iteration 01 | Test Loss = -0.3636
@@ -460,6 +481,13 @@ Iteration 18 | Test Loss = -0.2500
 Iteration 19 | Test Loss = -0.5000
 Result for handoverbox_biotac_baseline_mlp: -0.5000 ± 0.1208
 
+Iteration 00 | Test Loss = -0.3333
+Iteration 01 | Test Loss = -0.6667
+Iteration 02 | Test Loss = -0.5000
+Iteration 03 | Test Loss = -1.0000
+Iteration 04 | Test Loss = -0.5000
+Result for handoverbox_biotac_baseline_rnn: -0.6000 ± 0.2261
+
 Iteration 00 | Test Loss = -0.5833
 Iteration 01 | Test Loss = -0.5833
 Iteration 02 | Test Loss = -0.7500
@@ -591,6 +619,13 @@ Iteration 17 | Test Loss = -0.4545
 Iteration 18 | Test Loss = -0.4545
 Iteration 19 | Test Loss = -0.7273
 Result for handoverbox_neutouch_baseline_mlp: -0.5545 ± 0.1905
+
+Iteration 00 | Test Loss = -0.4545
+Iteration 01 | Test Loss = -0.4545
+Iteration 02 | Test Loss = -0.5455
+Iteration 03 | Test Loss = -0.6364
+Iteration 04 | Test Loss = -0.6364
+Result for handoverbox_neutouch_baseline_rnn: -0.5455 ± 0.0813
 
 Iteration 00 | Test Loss = -0.7273
 Iteration 01 | Test Loss = -0.7273
@@ -724,6 +759,13 @@ Iteration 18 | Test Loss = -0.4545
 Iteration 19 | Test Loss = -0.6364
 Result for handoverbox_neuhalf_baseline_mlp: -0.5773 ± 0.1474
 
+Iteration 00 | Test Loss = -0.4545
+Iteration 01 | Test Loss = -0.5455
+Iteration 02 | Test Loss = -0.6364
+Iteration 03 | Test Loss = -0.5455
+Iteration 04 | Test Loss = -0.5455
+Result for handoverbox_neuhalf_baseline_rnn: -0.5455 ± 0.0575
+
 Iteration 00 | Test Loss = -0.5455
 Iteration 01 | Test Loss = -0.7273
 Iteration 02 | Test Loss = -0.5455
@@ -855,6 +897,13 @@ Iteration 17 | Test Loss = -0.7500
 Iteration 18 | Test Loss = -0.2500
 Iteration 19 | Test Loss = -0.5000
 Result for handoverplate_biotac_baseline_mlp: -0.5000 ± 0.1394
+
+Iteration 00 | Test Loss = -0.4167
+Iteration 01 | Test Loss = -0.5000
+Iteration 02 | Test Loss = -0.5833
+Iteration 03 | Test Loss = -0.5833
+Iteration 04 | Test Loss = -0.5000
+Result for handoverplate_biotac_baseline_rnn: -0.5167 ± 0.0624
 
 Iteration 00 | Test Loss = -0.8333
 Iteration 01 | Test Loss = -0.9167
@@ -989,6 +1038,13 @@ Iteration 19 | Test Loss = -0.4545
 Result for handoverplate_neutouch_baseline_mlp: -0.5318 ± 0.1007
 
 Iteration 00 | Test Loss = -0.4545
+Iteration 01 | Test Loss = -0.5455
+Iteration 02 | Test Loss = -0.4545
+Iteration 03 | Test Loss = -0.5455
+Iteration 04 | Test Loss = -0.6364
+Result for handoverplate_neutouch_baseline_rnn: -0.5273 ± 0.0680
+
+Iteration 00 | Test Loss = -0.4545
 Iteration 01 | Test Loss = -0.6364
 Iteration 02 | Test Loss = -0.1818
 Iteration 03 | Test Loss = -0.8182
@@ -1119,6 +1175,13 @@ Iteration 17 | Test Loss = -0.3636
 Iteration 18 | Test Loss = -0.6364
 Iteration 19 | Test Loss = -0.7273
 Result for handoverplate_neuhalf_baseline_mlp: -0.4955 ± 0.1301
+
+Iteration 00 | Test Loss = -0.2727
+Iteration 01 | Test Loss = -0.3636
+Iteration 02 | Test Loss = -0.2727
+Iteration 03 | Test Loss = -0.5455
+Iteration 04 | Test Loss = -0.6364
+Result for handoverplate_neuhalf_baseline_rnn: -0.4182 ± 0.1477
 
 Iteration 00 | Test Loss = -0.2727
 Iteration 01 | Test Loss = -0.4545

@@ -12,7 +12,10 @@ import torch.nn as nn
 
 import numpy as np
 
-def evaluate(experiment_name, device='cuda'):
+torch.manual_seed(100)
+np.random.seed(100)
+
+def evaluate(experiment_name, frequency, device='cuda'):
     
     experiments = {
         
@@ -227,7 +230,7 @@ def evaluate(experiment_name, device='cuda'):
     
     if experiment_name not in experiments: raise Exception('Experiment not found')
     
-    test_loss_mean, test_loss_std = experiments[experiment_name]()
+    test_loss_mean, test_loss_std = experiments[experiment_name](frequency)
     
     print('Result for {:s}: {:0.4f} ± {:0.4f}'.format(experiment_name, test_loss_mean, test_loss_std))
     print()
@@ -294,20 +297,24 @@ def _create_evaluator(estimator, param_grid, scoring, cv=4, N=5, callback=None):
 #                                     | |                                             
 
 
-def _load_tool(tool_length, signal_type, transformation):
+def _load_tool(tool_length, signal_type, transformation, frequency):
     
     if signal_type == 'biotac':
         
-        npzfile = np.load(f'preprocessed/biotac_tool_{tool_length}.npz')
+        if frequency == 2200: npzfile = np.load(f'preprocessed/biotac_tool_{tool_length}.npz')
+        else: npzfile = np.load(f'downsampled/biotac_tool_{tool_length}_{frequency}hz.npz')
+            
         X = npzfile['signals'] / 1000
         y = npzfile['labels'] * 100
     
     if signal_type == 'neutouch':
         
-        npzfile = np.load(f'preprocessed/neutouch_tool_{tool_length}.npz')
-        X = npzfile['signals'] / 40
+        if frequency == 4000: npzfile = np.load(f'preprocessed/neutouch_tool_{tool_length}.npz')
+        else: npzfile = np.load(f'downsampled/neutouch_tool_{tool_length}_{frequency}hz.npz')
+
+        X = npzfile['signals'] / 1000
         y = npzfile['labels'] * 100
-    
+        
     if signal_type == 'neuhalf':
         
         npzfile = np.load(f'preprocessed/neutouch_tool_{tool_length}.npz')
@@ -361,7 +368,7 @@ def _evaluate_tool_mlp(tool_length, signal_type, transformation):
         'alpha': [0.0001, 0.001]
     }
     
-    estimator = MLPRegressor(hidden_layer_sizes=(16, 8), max_iter=2000)
+    estimator = MLPRegressor(hidden_layer_sizes=(16, 8), max_iter=2000, random_state=100)
     evaluate = _create_evaluator(estimator, param_grid, 'neg_mean_absolute_error')
     
     return evaluate(X, y)
@@ -438,13 +445,17 @@ def _load_handover(item, signal_type, transformation):
     
     if signal_type == 'biotac':
         
-        npzfile = np.load(f'preprocessed/biotac_handover_{item}.npz')
+        if frequency == 2200: npzfile = np.load(f'preprocessed/biotac_handover_{item}.npz')
+        else: npzfile = np.load(f'downsampled/biotac_handover_{item}_{frequency}hz.npz')
+        
         X = npzfile['signals'] / 1000
         y = npzfile['labels'][:, 0].astype(int)
     
     if signal_type == 'neutouch':
         
-        npzfile = np.load(f'preprocessed/neutouch_handover_{item}.npz')
+        if frequency == 4000: npzfile = np.load(f'preprocessed/neutouch_handover_{item}.npz')
+        else: npzfile = np.load(f'downsampled/neutouch_handover_{item}_{frequency}hz.npz')
+            
         X = npzfile['signals'] / 40
         y = npzfile['labels'][:, 0].astype(int)
     
@@ -497,7 +508,7 @@ def _evaluate_handover_mlp(item, signal_type, perform_fft):
         'alpha': [0.0001, 0.001]
     }
     
-    estimator = MLPClassifier(hidden_layer_sizes=(16, 8), max_iter=2000)
+    estimator = MLPClassifier(hidden_layer_sizes=(16, 8), max_iter=2000, random_state=100)
     evaluate = _create_evaluator(estimator, param_grid, 'accuracy', N=20)
     
     return evaluate(X, y)
@@ -544,13 +555,18 @@ def _load_food(signal_type, transformation):
     
     base_signal_type = signal_type if signal_type != 'neuhalf' else 'neutouch'
     
-    npzfile0 = np.load(f'preprocessed/{base_signal_type}_food_empty.npz')
-    npzfile1 = np.load(f'preprocessed/{base_signal_type}_food_water.npz')
-    npzfile2 = np.load(f'preprocessed/{base_signal_type}_food_tofu.npz')
-    npzfile3 = np.load(f'preprocessed/{base_signal_type}_food_watermelon.npz')
-    npzfile4 = np.load(f'preprocessed/{base_signal_type}_food_banana.npz')
-    npzfile5 = np.load(f'preprocessed/{base_signal_type}_food_apple.npz')
-    npzfile6 = np.load(f'preprocessed/{base_signal_type}_food_pepper.npz')
+    directory = 'preprocessed'
+    
+    if signal_type == 'biotac' and frequency != 2200: directory = 'downsampled'
+    if signal_type == 'neutouch' and frequency != 4000: directory = 'downsampled'
+    
+    npzfile0 = np.load(f'{directory}/{base_signal_type}_food_empty.npz')
+    npzfile1 = np.load(f'{directory}/{base_signal_type}_food_water.npz')
+    npzfile2 = np.load(f'{directory}/{base_signal_type}_food_tofu.npz')
+    npzfile3 = np.load(f'{directory}/{base_signal_type}_food_watermelon.npz')
+    npzfile4 = np.load(f'{directory}/{base_signal_type}_food_banana.npz')
+    npzfile5 = np.load(f'{directory}/{base_signal_type}_food_apple.npz')
+    npzfile6 = np.load(f'{directory}/{base_signal_type}_food_pepper.npz')
     
     X = np.vstack((npzfile0['signals'],
                    npzfile1['signals'],
@@ -628,7 +644,7 @@ def _evaluate_food_mlp(signal_type, perform_fft):
         'alpha': [0.0001, 0.001]
     }
     
-    estimator = MLPClassifier(hidden_layer_sizes=(16, 8), max_iter=2000)
+    estimator = MLPClassifier(hidden_layer_sizes=(16, 8), max_iter=2000, random_state=100)
     evaluate = _create_evaluator(estimator, param_grid, 'accuracy', N=20)
     
     return evaluate(X, y)
@@ -673,5 +689,5 @@ if __name__ == '__main__':
     
     import sys
     
-    if len(sys.argv) == 2: evaluate(sys.argv[1])
-    if len(sys.argv) == 3: evaluate(sys.argv[1], sys.argv[2])
+    if len(sys.argv) == 3: evaluate(sys.argv[1], int(sys.argv[2]))
+    if len(sys.argv) == 4: evaluate(sys.argv[1], int(sys.argv[2]), sys.argv[3])

@@ -560,13 +560,13 @@ def _load_food(signal_type, transformation, frequency):
     if signal_type == 'biotac' and frequency != 2200: directory = 'downsampled'
     if signal_type == 'neutouch' and frequency != 4000: directory = 'downsampled'
     
-    npzfile0 = np.load(f'{directory}/{base_signal_type}_food_empty.npz')
-    npzfile1 = np.load(f'{directory}/{base_signal_type}_food_water.npz')
-    npzfile2 = np.load(f'{directory}/{base_signal_type}_food_tofu.npz')
-    npzfile3 = np.load(f'{directory}/{base_signal_type}_food_watermelon.npz')
-    npzfile4 = np.load(f'{directory}/{base_signal_type}_food_banana.npz')
-    npzfile5 = np.load(f'{directory}/{base_signal_type}_food_apple.npz')
-    npzfile6 = np.load(f'{directory}/{base_signal_type}_food_pepper.npz')
+    npzfile0 = np.load(f'{directory}/{base_signal_type}_food_empty_{frequency}hz.npz')
+    npzfile1 = np.load(f'{directory}/{base_signal_type}_food_water_{frequency}hz.npz')
+    npzfile2 = np.load(f'{directory}/{base_signal_type}_food_tofu_{frequency}hz.npz')
+    npzfile3 = np.load(f'{directory}/{base_signal_type}_food_watermelon_{frequency}hz.npz')
+    npzfile4 = np.load(f'{directory}/{base_signal_type}_food_banana_{frequency}hz.npz')
+    npzfile5 = np.load(f'{directory}/{base_signal_type}_food_apple_{frequency}hz.npz')
+    npzfile6 = np.load(f'{directory}/{base_signal_type}_food_pepper_{frequency}hz.npz')
     
     X = np.vstack((npzfile0['signals'],
                    npzfile1['signals'],
@@ -586,16 +586,11 @@ def _load_food(signal_type, transformation, frequency):
     
     if signal_type == 'biotac':
         
-        print(X.shape)
-        X = X[:, 400:800] / 1000
-        print(X.shape)
+        X = X / 1000
     
     if signal_type == 'neutouch':
         
-        print(X.shape)
         X = X / 40
-        X = X[:, :, 30:90]
-        print(X.shape)
     
     if signal_type == 'neuhalf':
         

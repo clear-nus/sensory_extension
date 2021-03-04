@@ -11,7 +11,7 @@ import torch.nn as nn
 
 import numpy as np
 
-def evaluate(experiment_name, device='cuda'):
+def evaluate(experiment_name, device='cuda:2'):
     
     experiments = {
         
@@ -68,109 +68,233 @@ def evaluate(experiment_name, device='cuda'):
         
         'handover_2_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 4000, 'all', 'linear'),
         'handover_2_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 4000, 'all', 'rbf'),
-        'handover_3_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 4000, 'all'),
-        'handover_3_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'handover', 2, 4000, 'all', device),
+        'handover_2_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 4000, 'all'),
+        'handover_2_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'handover', 2, 4000, 'all', device),
         
         'foodPoking_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 4000, 'all', 'linear'),
         'foodPoking_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 4000, 'all', 'rbf'),
         'foodPoking_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 4000, 'all'),
         'foodPoking_kernel_rnn'            : partial(_evaluate_classifier_rnn, 'foodPoking', 'foodPoking', 4000, 'all', device),
+        
+        
+        'tool20_neutouch_kernel_3000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 3000, 'all', 'linear'),
+        'tool20_neutouch_kernel_3000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 3000, 'all', 'rbf'),
+        'tool20_neutouch_kernel_3000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 3000, 'all'),
+        'tool20_neutouch_kernel_2000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 2000, 'all', 'linear'),
+        'tool20_neutouch_kernel_2000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 2000, 'all', 'rbf'),
+        'tool20_neutouch_kernel_2000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 2000, 'all'),
+        'tool20_neutouch_kernel_1000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 1000, 'all', 'linear'),
+        'tool20_neutouch_kernel_1000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 1000, 'all', 'rbf'),
+        'tool20_neutouch_kernel_1000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 1000, 'all'),
+        'tool20_neutouch_kernel_500_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 500, 'all', 'linear'),
+        'tool20_neutouch_kernel_500_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 500, 'all', 'rbf'),
+        'tool20_neutouch_kernel_500_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 500, 'all'),
+        'tool20_neutouch_kernel_250_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 250, 'all', 'linear'),
+        'tool20_neutouch_kernel_250_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 250, 'all', 'rbf'),
+        'tool20_neutouch_kernel_250_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 250, 'all'),
+        'tool20_neutouch_kernel_100_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 100, 'all', 'linear'),
+        'tool20_neutouch_kernel_100_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 100, 'all', 'rbf'),
+        'tool20_neutouch_kernel_100_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 100, 'all'),
+        'tool20_neutouch_kernel_50_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 50, 'all', 'linear'),
+        'tool20_neutouch_kernel_50_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 50, 'all', 'rbf'),
+        'tool20_neutouch_kernel_50_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 50, 'all'),
+        'tool20_neutouch_kernel_10_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 10, 'all', 'linear'),
+        'tool20_neutouch_kernel_10_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 10, 'all', 'rbf'),
+        'tool20_neutouch_kernel_10_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 10, 'all'),
+        'tool20_neutouch_kernel_5_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 20, 5, 'all', 'linear'),
+        'tool20_neutouch_kernel_5_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 20, 5, 'all', 'rbf'),
+        'tool20_neutouch_kernel_5_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 20, 5, 'all'),
+        
+        'tool30_neutouch_kernel_3000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 3000, 'all', 'linear'),
+        'tool30_neutouch_kernel_3000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 3000, 'all', 'rbf'),
+        'tool30_neutouch_kernel_3000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 3000, 'all'),
+        'tool30_neutouch_kernel_2000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 2000, 'all', 'linear'),
+        'tool30_neutouch_kernel_2000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 2000, 'all', 'rbf'),
+        'tool30_neutouch_kernel_2000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 2000, 'all'),
+        'tool30_neutouch_kernel_1000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 1000, 'all', 'linear'),
+        'tool30_neutouch_kernel_1000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 1000, 'all', 'rbf'),
+        'tool30_neutouch_kernel_1000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 1000, 'all'),
+        'tool30_neutouch_kernel_500_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 500, 'all', 'linear'),
+        'tool30_neutouch_kernel_500_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 500, 'all', 'rbf'),
+        'tool30_neutouch_kernel_500_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 500, 'all'),
+        'tool30_neutouch_kernel_250_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 250, 'all', 'linear'),
+        'tool30_neutouch_kernel_250_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 250, 'all', 'rbf'),
+        'tool30_neutouch_kernel_250_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 250, 'all'),
+        'tool30_neutouch_kernel_100_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 100, 'all', 'linear'),
+        'tool30_neutouch_kernel_100_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 100, 'all', 'rbf'),
+        'tool30_neutouch_kernel_100_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 100, 'all'),
+        'tool30_neutouch_kernel_50_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 50, 'all', 'linear'),
+        'tool30_neutouch_kernel_50_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 50, 'all', 'rbf'),
+        'tool30_neutouch_kernel_50_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 50, 'all'),
+        'tool30_neutouch_kernel_10_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 10, 'all', 'linear'),
+        'tool30_neutouch_kernel_10_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 10, 'all', 'rbf'),
+        'tool30_neutouch_kernel_10_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 10, 'all'),
+        'tool30_neutouch_kernel_5_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 30, 5, 'all', 'linear'),
+        'tool30_neutouch_kernel_5_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 30, 5, 'all', 'rbf'),
+        'tool30_neutouch_kernel_5_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 30, 5, 'all'),
+        
+        'tool50_neutouch_kernel_3000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 3000, 'all', 'linear'),
+        'tool50_neutouch_kernel_3000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 3000, 'all', 'rbf'),
+        'tool50_neutouch_kernel_3000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 3000, 'all'),
+        'tool50_neutouch_kernel_2000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 2000, 'all', 'linear'),
+        'tool50_neutouch_kernel_2000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 2000, 'all', 'rbf'),
+        'tool50_neutouch_kernel_2000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 2000, 'all'),
+        'tool50_neutouch_kernel_1000_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 1000, 'all', 'linear'),
+        'tool50_neutouch_kernel_1000_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 1000, 'all', 'rbf'),
+        'tool50_neutouch_kernel_1000_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 1000, 'all'),
+        'tool50_neutouch_kernel_500_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 500, 'all', 'linear'),
+        'tool50_neutouch_kernel_500_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 500, 'all', 'rbf'),
+        'tool50_neutouch_kernel_500_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 500, 'all'),
+        'tool50_neutouch_kernel_250_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 250, 'all', 'linear'),
+        'tool50_neutouch_kernel_250_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 250, 'all', 'rbf'),
+        'tool50_neutouch_kernel_250_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 250, 'all'),
+        'tool50_neutouch_kernel_100_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 100, 'all', 'linear'),
+        'tool50_neutouch_kernel_100_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 100, 'all', 'rbf'),
+        'tool50_neutouch_kernel_100_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 100, 'all'),
+        'tool50_neutouch_kernel_50_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 50, 'all', 'linear'),
+        'tool50_neutouch_kernel_50_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 50, 'all', 'rbf'),
+        'tool50_neutouch_kernel_50_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 50, 'all'),
+        'tool50_neutouch_kernel_10_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 10, 'all', 'linear'),
+        'tool50_neutouch_kernel_10_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 10, 'all', 'rbf'),
+        'tool50_neutouch_kernel_10_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 10, 'all'),
+        'tool50_neutouch_kernel_5_svmlinear'                 : partial(_evaluate_tool_svm, 'rodTap', 50, 5, 'all', 'linear'),
+        'tool50_neutouch_kernel_5_svmrbf'                    : partial(_evaluate_tool_svm, 'rodTap', 50, 5, 'all', 'rbf'),
+        'tool50_neutouch_kernel_5_mlp'                       : partial(_evaluate_tool_mlp, 'rodTap', 50, 5, 'all'),
+        
+        
+        'handover_0_3000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 3000, 'all', 'linear'),
+        'handover_0_3000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 3000, 'all', 'rbf'),
+        'handover_0_3000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 3000, 'all'),
+        'handover_0_2000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 2000, 'all', 'linear'),
+        'handover_0_2000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 2000, 'all', 'rbf'),
+        'handover_0_2000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 2000, 'all'),
+        'handover_0_1000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 1000, 'all', 'linear'),
+        'handover_0_1000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 1000, 'all', 'rbf'),
+        'handover_0_1000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 1000, 'all'),
+        'handover_0_500_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 500, 'all', 'linear'),
+        'handover_0_500_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 500, 'all', 'rbf'),
+        'handover_0_500_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 500, 'all'),
+        'handover_0_250_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 250, 'all', 'linear'),
+        'handover_0_250_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 250, 'all', 'rbf'),
+        'handover_0_250_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 250, 'all'),
+        'handover_0_100_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 100, 'all', 'linear'),
+        'handover_0_100_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 100, 'all', 'rbf'),
+        'handover_0_100_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 100, 'all'),
+        'handover_0_50_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 50, 'all', 'linear'),
+        'handover_0_50_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 50, 'all', 'rbf'),
+        'handover_0_50_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 50, 'all'),
+        'handover_0_10_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 10, 'all', 'linear'),
+        'handover_0_10_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 10, 'all', 'rbf'),
+        'handover_0_10_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 10, 'all'),
+        'handover_0_5_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 5, 'all', 'linear'),
+        'handover_0_5_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 5, 'all', 'rbf'),
+        'handover_0_5_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 5, 'all'),
+        
+        'handover_1_3000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 3000, 'all', 'linear'),
+        'handover_1_3000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 3000, 'all', 'rbf'),
+        'handover_1_3000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 3000, 'all'),
+        'handover_1_2000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 2000, 'all', 'linear'),
+        'handover_1_2000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 2000, 'all', 'rbf'),
+        'handover_1_2000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 2000, 'all'),
+        'handover_1_1000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 1000, 'all', 'linear'),
+        'handover_1_1000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 1000, 'all', 'rbf'),
+        'handover_1_1000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 1000, 'all'),
+        'handover_1_500_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 500, 'all', 'linear'),
+        'handover_1_500_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 500, 'all', 'rbf'),
+        'handover_1_500_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 500, 'all'),
+        'handover_1_250_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 250, 'all', 'linear'),
+        'handover_1_250_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 250, 'all', 'rbf'),
+        'handover_1_250_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 250, 'all'),
+        'handover_1_100_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 100, 'all', 'linear'),
+        'handover_1_100_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 100, 'all', 'rbf'),
+        'handover_1_100_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 100, 'all'),
+        'handover_1_50_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 50, 'all', 'linear'),
+        'handover_1_50_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 50, 'all', 'rbf'),
+        'handover_1_50_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 50, 'all'),
+        'handover_1_10_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 10, 'all', 'linear'),
+        'handover_1_10_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 10, 'all', 'rbf'),
+        'handover_1_10_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 10, 'all'),
+        'handover_1_5_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 5, 'all', 'linear'),
+        'handover_1_5_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 5, 'all', 'rbf'),
+        'handover_1_5_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 5, 'all'),
+        
+        
+        'handover_2_3000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 3000, 'all', 'linear'),
+        'handover_2_3000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 3000, 'all', 'rbf'),
+        'handover_2_3000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 3000, 'all'),
+        'handover_2_2000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 2000, 'all', 'linear'),
+        'handover_2_2000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 2000, 'all', 'rbf'),
+        'handover_2_2000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 2000, 'all'),
+        'handover_2_1000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 1000, 'all', 'linear'),
+        'handover_2_1000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 1000, 'all', 'rbf'),
+        'handover_2_1000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 1000, 'all'),
+        'handover_2_500_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 500, 'all', 'linear'),
+        'handover_2_500_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 500, 'all', 'rbf'),
+        'handover_2_500_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 500, 'all'),
+        'handover_2_250_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 250, 'all', 'linear'),
+        'handover_2_250_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 250, 'all', 'rbf'),
+        'handover_2_250_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 250, 'all'),
+        'handover_2_100_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 100, 'all', 'linear'),
+        'handover_2_100_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 100, 'all', 'rbf'),
+        'handover_2_100_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 100, 'all'),
+        'handover_2_50_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 50, 'all', 'linear'),
+        'handover_2_50_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 50, 'all', 'rbf'),
+        'handover_2_50_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 50, 'all'),
+        'handover_2_10_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 10, 'all', 'linear'),
+        'handover_2_10_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 10, 'all', 'rbf'),
+        'handover_2_10_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 10, 'all'),
+        'handover_2_5_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 5, 'all', 'linear'),
+        'handover_2_5_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 5, 'all', 'rbf'),
+        'handover_2_5_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 5, 'all'),
+        
+        'foodPoking_3000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 3000, 'all', 'linear'),
+        'foodPoking_2000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 2000, 'all', 'linear'),
+        'foodPoking_1000_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 1000, 'all', 'linear'),
+        'foodPoking_500_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 500, 'all', 'linear'),
+        'foodPoking_250_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 250, 'all', 'linear'),
+        'foodPoking_100_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 100, 'all', 'linear'),
+        'foodPoking_50_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 50, 'all', 'linear'),
+        'foodPoking_10_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 10, 'all', 'linear'),
+        'foodPoking_5_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 5, 'all', 'linear'),
+        
+        
+        'foodPoking_3000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 3000, 'all', 'rbf'),
+        'foodPoking_2000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 2000, 'all', 'rbf'),
+        'foodPoking_1000_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 1000, 'all', 'rbf'),
+        'foodPoking_500_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 500, 'all', 'rbf'),
+        'foodPoking_250_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 250, 'all', 'rbf'),
+        'foodPoking_100_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 100, 'all', 'rbf'),
+        'foodPoking_50_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 50, 'all', 'rbf'),
+        'foodPoking_10_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 10, 'all', 'rbf'),
+        'foodPoking_5_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 5, 'all', 'rbf'),
 
-#         'handoverrod_biotac_baseline_svmrbf'               : partial(_evaluate_handover_svm, 'rod', 'biotac', False, 'rbf'),
-#         'handoverrod_biotac_baseline_mlp'                  : partial(_evaluate_handover_mlp, 'rod', 'biotac', False),
-#         'handoverrod_biotac_baseline_rnn'                  : partial(_evaluate_handover_rnn, 'rod', 'biotac', device),
-#         'handoverrod_biotac_fft_svmlinear'                 : partial(_evaluate_handover_svm, 'rod', 'biotac', True, 'linear'),
-#         'handoverrod_biotac_fft_svmrbf'                    : partial(_evaluate_handover_svm, 'rod', 'biotac', True, 'rbf'),
-#         'handoverrod_biotac_fft_mlp'                       : partial(_evaluate_handover_mlp, 'rod', 'biotac', True),
         
-#         'handoverrod_neutouch_baseline_svmlinear'          : partial(_evaluate_handover_svm, 'rod', 'neutouch', False, 'linear'),
-#         'handoverrod_neutouch_baseline_svmrbf'             : partial(_evaluate_handover_svm, 'rod', 'neutouch', False, 'rbf'),
-#         'handoverrod_neutouch_baseline_mlp'                : partial(_evaluate_handover_mlp, 'rod', 'neutouch', False),
-#         'handoverrod_neutouch_baseline_rnn'                : partial(_evaluate_handover_rnn, 'rod', 'neutouch', device),
-#         'handoverrod_neutouch_fft_svmlinear'               : partial(_evaluate_handover_svm, 'rod', 'neutouch', True, 'linear'),
-#         'handoverrod_neutouch_fft_svmrbf'                  : partial(_evaluate_handover_svm, 'rod', 'neutouch', True, 'rbf'),
-#         'handoverrod_neutouch_fft_mlp'                     : partial(_evaluate_handover_mlp, 'rod', 'neutouch', True),
+        'foodPoking_3000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 3000, 'all'),
+        'foodPoking_2000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 2000, 'all'),
+        'foodPoking_1000_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 1000, 'all'),
+        'foodPoking_500_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 500, 'all'),
+        'foodPoking_250_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 250, 'all'),
+        'foodPoking_100_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 100, 'all'),
+        'foodPoking_50_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 50, 'all'),
+        'foodPoking_10_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 10, 'all'),
+        'foodPoking_5_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 5, 'all'),
         
-#         'handoverrod_neuhalf_baseline_svmlinear'           : partial(_evaluate_handover_svm, 'rod', 'neuhalf', False, 'linear'),
-#         'handoverrod_neuhalf_baseline_svmrbf'              : partial(_evaluate_handover_svm, 'rod', 'neuhalf', False, 'rbf'),
-#         'handoverrod_neuhalf_baseline_mlp'                 : partial(_evaluate_handover_mlp, 'rod', 'neuhalf', False),
-#         'handoverrod_neuhalf_baseline_rnn'                 : partial(_evaluate_handover_rnn, 'rod', 'neuhalf', device),
-#         'handoverrod_neuhalf_fft_svmlinear'                : partial(_evaluate_handover_svm, 'rod', 'neuhalf', True, 'linear'),
-#         'handoverrod_neuhalf_fft_svmrbf'                   : partial(_evaluate_handover_svm, 'rod', 'neuhalf', True, 'rbf'),
-#         'handoverrod_neuhalf_fft_mlp'                      : partial(_evaluate_handover_mlp, 'rod', 'neuhalf', True),
         
-#         'handoverbox_biotac_baseline_svmlinear'            : partial(_evaluate_handover_svm, 'box', 'biotac', False, 'linear'),
-#         'handoverbox_biotac_baseline_svmrbf'               : partial(_evaluate_handover_svm, 'box', 'biotac', False, 'rbf'),
-#         'handoverbox_biotac_baseline_mlp'                  : partial(_evaluate_handover_mlp, 'box', 'biotac', False),
-#         'handoverbox_biotac_baseline_rnn'                  : partial(_evaluate_handover_rnn, 'box', 'biotac', device),
-#         'handoverbox_biotac_fft_svmlinear'                 : partial(_evaluate_handover_svm, 'box', 'biotac', True, 'linear'),
-#         'handoverbox_biotac_fft_svmrbf'                    : partial(_evaluate_handover_svm, 'box', 'biotac', True, 'rbf'),
-#         'handoverbox_biotac_fft_mlp'                       : partial(_evaluate_handover_mlp, 'box', 'biotac', True),
+        'foodPoking_neuhalf_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 4000, 'neuhalf', 'linear'),
+        'foodPoking_neuhalf_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'foodPoking', 'foodPoking', 4000, 'neuhalf', 'rbf'),
+        'foodPoking_neuhalf_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'foodPoking', 'foodPoking', 4000, 'neuhalf'),
+
+        'handover_0_neuhalf_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 0, 4000, 'neuhalf', 'linear'),
+        'handover_0_neuhalf_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 0, 4000, 'neuhalf', 'rbf'),
+        'handover_0_neuhalf_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 0, 4000, 'neuhalf'),
         
-#         'handoverbox_neutouch_baseline_svmlinear'          : partial(_evaluate_handover_svm, 'box', 'neutouch', False, 'linear'),
-#         'handoverbox_neutouch_baseline_svmrbf'             : partial(_evaluate_handover_svm, 'box', 'neutouch', False, 'rbf'),
-#         'handoverbox_neutouch_baseline_mlp'                : partial(_evaluate_handover_mlp, 'box', 'neutouch', False),
-#         'handoverbox_neutouch_baseline_rnn'                : partial(_evaluate_handover_rnn, 'box', 'neutouch', device),
-#         'handoverbox_neutouch_fft_svmlinear'               : partial(_evaluate_handover_svm, 'box', 'neutouch', True, 'linear'),
-#         'handoverbox_neutouch_fft_svmrbf'                  : partial(_evaluate_handover_svm, 'box', 'neutouch', True, 'rbf'),
-#         'handoverbox_neutouch_fft_mlp'                     : partial(_evaluate_handover_mlp, 'box', 'neutouch', True),
+        'handover_1_neuhalf_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 1, 4000, 'neuhalf', 'linear'),
+        'handover_1_neuhalf_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 1, 4000, 'neuhalf', 'rbf'),
+        'handover_1_neuhalf_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 1, 4000, 'neuhalf'),
         
-#         'handoverbox_neuhalf_baseline_svmlinear'           : partial(_evaluate_handover_svm, 'box', 'neuhalf', False, 'linear'),
-#         'handoverbox_neuhalf_baseline_svmrbf'              : partial(_evaluate_handover_svm, 'box', 'neuhalf', False, 'rbf'),
-#         'handoverbox_neuhalf_baseline_mlp'                 : partial(_evaluate_handover_mlp, 'box', 'neuhalf', False),
-#         'handoverbox_neuhalf_baseline_rnn'                 : partial(_evaluate_handover_rnn, 'box', 'neuhalf', device),
-#         'handoverbox_neuhalf_fft_svmlinear'                : partial(_evaluate_handover_svm, 'box', 'neuhalf', True, 'linear'),
-#         'handoverbox_neuhalf_fft_svmrbf'                   : partial(_evaluate_handover_svm, 'box', 'neuhalf', True, 'rbf'),
-#         'handoverbox_neuhalf_fft_mlp'                      : partial(_evaluate_handover_mlp, 'box', 'neuhalf', True),
-        
-#         'handoverplate_biotac_baseline_svmlinear'          : partial(_evaluate_handover_svm, 'plate', 'biotac', False, 'linear'),
-#         'handoverplate_biotac_baseline_svmrbf'             : partial(_evaluate_handover_svm, 'plate', 'biotac', False, 'rbf'),
-#         'handoverplate_biotac_baseline_mlp'                : partial(_evaluate_handover_mlp, 'plate', 'biotac', False),
-#         'handoverplate_biotac_baseline_rnn'                : partial(_evaluate_handover_rnn, 'plate', 'biotac', device),
-#         'handoverplate_biotac_fft_svmlinear'               : partial(_evaluate_handover_svm, 'plate', 'biotac', True, 'linear'),
-#         'handoverplate_biotac_fft_svmrbf'                  : partial(_evaluate_handover_svm, 'plate', 'biotac', True, 'rbf'),
-#         'handoverplate_biotac_fft_mlp'                     : partial(_evaluate_handover_mlp, 'plate', 'biotac', True),
-        
-#         'handoverplate_neutouch_baseline_svmlinear'        : partial(_evaluate_handover_svm, 'plate', 'neutouch', False, 'linear'),
-#         'handoverplate_neutouch_baseline_svmrbf'           : partial(_evaluate_handover_svm, 'plate', 'neutouch', False, 'rbf'),
-#         'handoverplate_neutouch_baseline_mlp'              : partial(_evaluate_handover_mlp, 'plate', 'neutouch', False),
-#         'handoverplate_neutouch_baseline_rnn'              : partial(_evaluate_handover_rnn, 'plate', 'neutouch', device),
-#         'handoverplate_neutouch_fft_svmlinear'             : partial(_evaluate_handover_svm, 'plate', 'neutouch', True, 'linear'),
-#         'handoverplate_neutouch_fft_svmrbf'                : partial(_evaluate_handover_svm, 'plate', 'neutouch', True, 'rbf'),
-#         'handoverplate_neutouch_fft_mlp'                   : partial(_evaluate_handover_mlp, 'plate', 'neutouch', True),
-        
-#         'handoverplate_neuhalf_baseline_svmlinear'         : partial(_evaluate_handover_svm, 'plate', 'neuhalf', False, 'linear'),
-#         'handoverplate_neuhalf_baseline_svmrbf'            : partial(_evaluate_handover_svm, 'plate', 'neuhalf', False, 'rbf'),
-#         'handoverplate_neuhalf_baseline_mlp'               : partial(_evaluate_handover_mlp, 'plate', 'neuhalf', False),
-#         'handoverplate_neuhalf_baseline_rnn'               : partial(_evaluate_handover_rnn, 'plate', 'neuhalf', device),
-#         'handoverplate_neuhalf_fft_svmlinear'              : partial(_evaluate_handover_svm, 'plate', 'neuhalf', True, 'linear'),
-#         'handoverplate_neuhalf_fft_svmrbf'                 : partial(_evaluate_handover_svm, 'plate', 'neuhalf', True, 'rbf'),
-#         'handoverplate_neuhalf_fft_mlp'                    : partial(_evaluate_handover_mlp, 'plate', 'neuhalf', True),
-        
-#         'food_biotac_baseline_svmlinear'                   : partial(_evaluate_food_svm, 'biotac', False, 'linear'),
-#         'food_biotac_baseline_svmrbf'                      : partial(_evaluate_food_svm, 'biotac', False, 'rbf'),
-#         'food_biotac_baseline_mlp'                         : partial(_evaluate_food_mlp, 'biotac', False),
-#         'food_biotac_baseline_rnn'                         : partial(_evaluate_food_rnn, 'biotac', device),
-#         'food_biotac_fft_svmlinear'                        : partial(_evaluate_food_svm, 'biotac', True, 'linear'),
-#         'food_biotac_fft_svmrbf'                           : partial(_evaluate_food_svm, 'biotac', True, 'rbf'),
-#         'food_biotac_fft_mlp'                              : partial(_evaluate_food_mlp, 'biotac', True),
-        
-#         'food_neutouch_baseline_svmlinear'                 : partial(_evaluate_food_svm, 'neutouch', False, 'linear'),
-#         'food_neutouch_baseline_svmrbf'                    : partial(_evaluate_food_svm, 'neutouch', False, 'rbf'),
-#         'food_neutouch_baseline_mlp'                       : partial(_evaluate_food_mlp, 'neutouch', False),
-#         'food_neutouch_baseline_rnn'                       : partial(_evaluate_food_rnn, 'neutouch', device),
-#         'food_neutouch_fft_svmlinear'                      : partial(_evaluate_food_svm, 'neutouch', True, 'linear'),
-#         'food_neutouch_fft_svmrbf'                         : partial(_evaluate_food_svm, 'neutouch', True, 'rbf'),
-#         'food_neutouch_fft_mlp'                            : partial(_evaluate_food_mlp, 'neutouch', True),
-        
-#         'food_neuhalf_baseline_svmlinear'                  : partial(_evaluate_food_svm, 'neuhalf', False, 'linear'),
-#         'food_neuhalf_baseline_svmrbf'                     : partial(_evaluate_food_svm, 'neuhalf', False, 'rbf'),
-#         'food_neuhalf_baseline_mlp'                        : partial(_evaluate_food_mlp, 'neuhalf', False),
-#         'food_neuhalf_baseline_rnn'                        : partial(_evaluate_food_rnn, 'neuhalf', device),
-#         'food_neuhalf_fft_svmlinear'                       : partial(_evaluate_food_svm, 'neuhalf', True, 'linear'),
-#         'food_neuhalf_fft_svmrbf'                          : partial(_evaluate_food_svm, 'neuhalf', True, 'rbf'),
-#         'food_neuhalf_fft_mlp'                             : partial(_evaluate_food_mlp, 'neuhalf', True),
-        
+        'handover_2_neuhalf_kernel_svmlinear'            : partial(_evaluate_classifier_svm, 'handover', 2, 4000, 'neuhalf', 'linear'),
+        'handover_2_neuhalf_kernel_svmrbf'            : partial(_evaluate_classifier_svm, 'handover', 2, 4000, 'neuhalf', 'rbf'),
+        'handover_2_neuhalf_kernel_mlp'            : partial(_evaluate_classifier_mlp, 'handover', 2, 4000, 'neuhalf'),
      }
     
     if experiment_name not in experiments: raise Exception('Experiment not found')
@@ -246,6 +370,7 @@ def _load_data(task, tool_type, frequency, transformation, signal_type):
     data_dir = f'../robot_sensory_extension/data/kernel_features/kernel_{task}_{tool_type}_{frequency}.npz'
     npzfile = np.load(data_dir)
     
+    
     if signal_type == 'neuhalf':
         # left sensor
         X = np.concatenate( [npzfile['signals'][:, : , 0:40], npzfile['signals'][:, : , 80:120]], 2)
@@ -254,13 +379,14 @@ def _load_data(task, tool_type, frequency, transformation, signal_type):
         X = npzfile['signals']
         y = npzfile['labels'] * 100
         
-    if transformation == 'default':
         
+
+        
+    if transformation == 'default':
         X = np.reshape(X, (X.shape[0], -1))
         y = y.ravel()
 
     if transformation == 'tensor':
-    
         X = torch.Tensor( X )
         y = torch.Tensor( np.reshape(y, (-1, 1)) )
         
@@ -271,7 +397,7 @@ def _load_data(task, tool_type, frequency, transformation, signal_type):
         X = np.swapaxes(X, 1, 3)
         X = np.reshape(X, (X.shape[0], 80, -1))
         y = y.ravel()
-    
+
     return X, y
 
 
@@ -305,6 +431,8 @@ def _evaluate_tool_mlp(task, tool_type, frequency, signal_type):
 def _evaluate_tool_rnn(task, tool_type, frequency, signal_type, device):
     
     X, y = _load_data(task, tool_type, frequency=frequency, transformation='tensor', signal_type=signal_type)
+    #X = X.to(device)
+    #y = y.to(device)
     
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
@@ -367,12 +495,46 @@ def _evaluate_tool_neusingle_svm(task, tool_type, frequency, signal_type, kernel
 #   |_|  |_|\__,_|_| |_|\__,_|\___/ \_/ \___|_|     |______/_/\_\ .__/ \___|_|  |_|_| |_| |_|\___|_| |_|\__|___/
 #                                                               | |                                             
 
+def _load_classifier_data(task, tool_type, frequency, transformation, signal_type):
+    
+    data_dir = f'../robot_sensory_extension/data/kernel_features/kernel_{task}_{tool_type}_{frequency}.npz'
+    npzfile = np.load(data_dir)
+    
+    
+    if signal_type == 'neuhalf':
+        # left sensor
+        X = np.concatenate( [npzfile['signals'][:, : , 0:40], npzfile['signals'][:, : , 80:120]], 2)
+        y = npzfile['labels']
+    elif signal_type == 'all':
+        X = npzfile['signals']
+        y = npzfile['labels'] 
+        
+        
+    if transformation == 'default':
+        X = np.reshape(X, (X.shape[0], -1))
+        y = y.ravel()
 
+    if transformation == 'tensor':
+        X = torch.Tensor( X )
+        y = torch.Tensor( np.reshape(y, (-1)) )
+        y = y.type(torch.LongTensor)
+        
+    if transformation == 'single':
+        X = npzfile['signals']
+        y = npzfile['labels']
+        X = np.reshape(X, (X.shape[0], X.shape[1], -1, 80 ))
+        X = np.swapaxes(X, 1, 3)
+        X = np.reshape(X, (X.shape[0], 80, -1))
+        y = y.ravel()
+        
+    
+
+    return X, y
 
 
 def _evaluate_classifier_svm(task, tool_type, frequency, signal_type, kernel):
 
-    X, y = _load_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
+    X, y = _load_classifier_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
     
     param_grid = {
         'C': [1, 3, 10, 30, 100]
@@ -386,7 +548,7 @@ def _evaluate_classifier_svm(task, tool_type, frequency, signal_type, kernel):
 
 def _evaluate_classifier_mlp(task, tool_type, frequency, signal_type):
 
-    X, y = _load_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
+    X, y = _load_classifier_data(task, tool_type, frequency=frequency, transformation='default', signal_type=signal_type)
     
     param_grid = {
         'learning_rate_init': [0.01, 0.03, 0.1, 0.3],
@@ -401,13 +563,19 @@ def _evaluate_classifier_mlp(task, tool_type, frequency, signal_type):
 
 def _evaluate_classifier_rnn(task, tool_type, frequency, signal_type, device):
 
-    X, y = _load_data(task, tool_type, frequency=frequency, transformation='tensor', signal_type=signal_type)
+    X, y = _load_classifier_data(task, tool_type, frequency=frequency, transformation='tensor', signal_type=signal_type)
     
+    #X = X.to(device)
+    #y = y.to(device)
+   
+    
+        
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
     estimator = NeuralNetClassifier(RNNModule,
                                    module__input_dim=X.shape[2],
-                                   module__output_dim=2,
+                                   module__output_dim=len(torch.unique(y)),
+                                   criterion = nn.CrossEntropyLoss,
                                    iterator_train__shuffle=True,
                                    max_epochs=1000,
                                    train_split=False,

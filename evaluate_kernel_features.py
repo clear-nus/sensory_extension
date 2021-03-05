@@ -191,7 +191,7 @@ def _evaluate_tool_neusingle_svm(task, tool_type, frequency, signal_type, kernel
     best_test_loss_mean = float('inf')
     best_test_loss_std = float('inf')
     
-    with open(f'results/neutouch_sing_{task}_{tool_type}_{frequency}.csv', 'w') as file:
+    with open(f'results/neutouch_sing_{task}_{tool_type}_{frequency}_{kernel}.csv', 'w') as file:
     
         for taxel in range(1, 81):
             

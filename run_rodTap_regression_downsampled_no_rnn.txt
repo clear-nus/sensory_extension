@@ -4,3 +4,429 @@ Iteration 2 | Test Loss = 1.2626
 Iteration 3 | Test Loss = 1.3233
 Iteration 4 | Test Loss = 1.2208
 Result for kernel_regression_rodTap_20_3000_all_svrlinear: 1.3167 ± 0.1053
+Iteration 0 | Test Loss = 1.4184
+Iteration 1 | Test Loss = 1.1437
+Iteration 2 | Test Loss = 1.2335
+Iteration 3 | Test Loss = 1.2821
+Iteration 4 | Test Loss = 1.1662
+Result for kernel_regression_rodTap_20_3000_all_svrrbf: 1.2488 ± 0.0979
+Iteration 0 | Test Loss = 1.3958
+Iteration 1 | Test Loss = 1.1073
+Iteration 2 | Test Loss = 1.3006
+Iteration 3 | Test Loss = 1.2516
+Iteration 4 | Test Loss = 1.1215
+Result for kernel_regression_rodTap_20_3000_all_mlp: 1.2354 ± 0.1092
+Iteration 0 | Test Loss = 2.4996
+Iteration 1 | Test Loss = 2.1361
+Iteration 2 | Test Loss = 2.5814
+Iteration 3 | Test Loss = 2.6371
+Iteration 4 | Test Loss = 2.6192
+Result for kernel_regression_rodTap_30_3000_all_svrlinear: 2.4947 ± 0.1854
+Iteration 0 | Test Loss = 2.3779
+Iteration 1 | Test Loss = 2.3638
+Iteration 2 | Test Loss = 2.5029
+Iteration 3 | Test Loss = 3.0000
+Iteration 4 | Test Loss = 2.5777
+Result for kernel_regression_rodTap_30_3000_all_svrrbf: 2.5645 ± 0.2318
+Iteration 0 | Test Loss = 1.6895
+Iteration 1 | Test Loss = 1.4726
+Iteration 2 | Test Loss = 1.7696
+Iteration 3 | Test Loss = 2.1885
+Iteration 4 | Test Loss = 2.1821
+Result for kernel_regression_rodTap_30_3000_all_mlp: 1.8605 ± 0.2825
+Iteration 0 | Test Loss = 3.9805
+Iteration 1 | Test Loss = 3.9583
+Iteration 2 | Test Loss = 4.1561
+Iteration 3 | Test Loss = 4.0062
+Iteration 4 | Test Loss = 4.2966
+Result for kernel_regression_rodTap_50_3000_all_svrlinear: 4.0795 ± 0.1287
+Iteration 0 | Test Loss = 3.5547
+Iteration 1 | Test Loss = 3.5490
+Iteration 2 | Test Loss = 3.4705
+Iteration 3 | Test Loss = 3.4500
+Iteration 4 | Test Loss = 3.8411
+Result for kernel_regression_rodTap_50_3000_all_svrrbf: 3.5731 ± 0.1403
+Iteration 0 | Test Loss = 3.2572
+Iteration 1 | Test Loss = 3.2318
+Iteration 2 | Test Loss = 3.8899
+Iteration 3 | Test Loss = 3.4276
+Iteration 4 | Test Loss = 3.6734
+Result for kernel_regression_rodTap_50_3000_all_mlp: 3.4960 ± 0.2522
+Iteration 0 | Test Loss = 1.3520
+Iteration 1 | Test Loss = 1.3357
+Iteration 2 | Test Loss = 1.3972
+Iteration 3 | Test Loss = 1.4017
+Iteration 4 | Test Loss = 1.2828
+Result for kernel_regression_rodTap_20_2000_all_svrlinear: 1.3539 ± 0.0437
+Iteration 0 | Test Loss = 1.2229
+Iteration 1 | Test Loss = 1.2845
+Iteration 2 | Test Loss = 1.2837
+Iteration 3 | Test Loss = 1.1379
+Iteration 4 | Test Loss = 1.1661
+Result for kernel_regression_rodTap_20_2000_all_svrrbf: 1.2190 ± 0.0598
+Iteration 0 | Test Loss = 1.2956
+Iteration 1 | Test Loss = 1.3881
+Iteration 2 | Test Loss = 1.4190
+Iteration 3 | Test Loss = 1.2796
+Iteration 4 | Test Loss = 1.3926
+Result for kernel_regression_rodTap_20_2000_all_mlp: 1.3550 ± 0.0562
+Iteration 0 | Test Loss = 2.9740
+Iteration 1 | Test Loss = 2.7819
+Iteration 2 | Test Loss = 2.5088
+Iteration 3 | Test Loss = 2.6164
+Iteration 4 | Test Loss = 2.4405
+Result for kernel_regression_rodTap_30_2000_all_svrlinear: 2.6643 ± 0.1930
+Iteration 0 | Test Loss = 2.9451
+Iteration 1 | Test Loss = 2.7148
+Iteration 2 | Test Loss = 2.4494
+Iteration 3 | Test Loss = 2.4707
+Iteration 4 | Test Loss = 2.3123
+Result for kernel_regression_rodTap_30_2000_all_svrrbf: 2.5785 ± 0.2246
+Iteration 0 | Test Loss = 2.3587
+Iteration 1 | Test Loss = 2.0335
+Iteration 2 | Test Loss = 1.7824
+Iteration 3 | Test Loss = 1.8849
+Iteration 4 | Test Loss = 1.6696
+Result for kernel_regression_rodTap_30_2000_all_mlp: 1.9458 ± 0.2387
+Iteration 0 | Test Loss = 3.3860
+Iteration 1 | Test Loss = 3.5491
+Iteration 2 | Test Loss = 4.1022
+Iteration 3 | Test Loss = 3.9582
+Iteration 4 | Test Loss = 4.6407
+Result for kernel_regression_rodTap_50_2000_all_svrlinear: 3.9272 ± 0.4419
+Iteration 0 | Test Loss = 3.2730
+Iteration 1 | Test Loss = 3.2148
+Iteration 2 | Test Loss = 3.6335
+Iteration 3 | Test Loss = 3.6518
+Iteration 4 | Test Loss = 3.7512
+Result for kernel_regression_rodTap_50_2000_all_svrrbf: 3.5049 ± 0.2176
+Iteration 0 | Test Loss = 2.9047
+Iteration 1 | Test Loss = 2.7786
+Iteration 2 | Test Loss = 3.4048
+Iteration 3 | Test Loss = 3.2458
+Iteration 4 | Test Loss = 4.0031
+Result for kernel_regression_rodTap_50_2000_all_mlp: 3.2674 ± 0.4315
+Iteration 0 | Test Loss = 1.2017
+Iteration 1 | Test Loss = 1.5362
+Iteration 2 | Test Loss = 1.3309
+Iteration 3 | Test Loss = 1.2938
+Iteration 4 | Test Loss = 1.4053
+Result for kernel_regression_rodTap_20_1000_all_svrlinear: 1.3536 ± 0.1124
+Iteration 0 | Test Loss = 1.1830
+Iteration 1 | Test Loss = 1.3567
+Iteration 2 | Test Loss = 1.2191
+Iteration 3 | Test Loss = 1.2411
+Iteration 4 | Test Loss = 1.2565
+Result for kernel_regression_rodTap_20_1000_all_svrrbf: 1.2513 ± 0.0582
+Iteration 0 | Test Loss = 1.0948
+Iteration 1 | Test Loss = 1.5194
+Iteration 2 | Test Loss = 1.1419
+Iteration 3 | Test Loss = 1.1300
+Iteration 4 | Test Loss = 1.2666
+Result for kernel_regression_rodTap_20_1000_all_mlp: 1.2305 ± 0.1557
+Iteration 0 | Test Loss = 2.6671
+Iteration 1 | Test Loss = 2.5497
+Iteration 2 | Test Loss = 2.6304
+Iteration 3 | Test Loss = 2.6764
+Iteration 4 | Test Loss = 2.5306
+Result for kernel_regression_rodTap_30_1000_all_svrlinear: 2.6108 ± 0.0600
+Iteration 0 | Test Loss = 2.4566
+Iteration 1 | Test Loss = 2.4356
+Iteration 2 | Test Loss = 2.4283
+Iteration 3 | Test Loss = 2.8140
+Iteration 4 | Test Loss = 2.4794
+Result for kernel_regression_rodTap_30_1000_all_svrrbf: 2.5228 ± 0.1467
+Iteration 0 | Test Loss = 2.0893
+Iteration 1 | Test Loss = 1.8805
+Iteration 2 | Test Loss = 1.9871
+Iteration 3 | Test Loss = 2.5246
+Iteration 4 | Test Loss = 2.0488
+Result for kernel_regression_rodTap_30_1000_all_mlp: 2.1061 ± 0.2208
+Iteration 0 | Test Loss = 3.6164
+Iteration 1 | Test Loss = 3.6160
+Iteration 2 | Test Loss = 3.4605
+Iteration 3 | Test Loss = 3.5021
+Iteration 4 | Test Loss = 4.2338
+Result for kernel_regression_rodTap_50_1000_all_svrlinear: 3.6858 ± 0.2809
+Iteration 0 | Test Loss = 3.2347
+Iteration 1 | Test Loss = 3.4887
+Iteration 2 | Test Loss = 3.3889
+Iteration 3 | Test Loss = 3.1101
+Iteration 4 | Test Loss = 3.9186
+Result for kernel_regression_rodTap_50_1000_all_svrrbf: 3.4282 ± 0.2772
+Iteration 0 | Test Loss = 3.3688
+Iteration 1 | Test Loss = 3.5972
+Iteration 2 | Test Loss = 3.0522
+Iteration 3 | Test Loss = 3.6112
+Iteration 4 | Test Loss = 3.7049
+Result for kernel_regression_rodTap_50_1000_all_mlp: 3.4669 ± 0.2350
+Iteration 0 | Test Loss = 1.3317
+Iteration 1 | Test Loss = 1.3134
+Iteration 2 | Test Loss = 1.4187
+Iteration 3 | Test Loss = 1.5516
+Iteration 4 | Test Loss = 1.4249
+Result for kernel_regression_rodTap_20_500_all_svrlinear: 1.4081 ± 0.0846
+Iteration 0 | Test Loss = 1.1912
+Iteration 1 | Test Loss = 1.1142
+Iteration 2 | Test Loss = 1.2644
+Iteration 3 | Test Loss = 1.3759
+Iteration 4 | Test Loss = 1.3151
+Result for kernel_regression_rodTap_20_500_all_svrrbf: 1.2521 ± 0.0918
+Iteration 0 | Test Loss = 1.2882
+Iteration 1 | Test Loss = 1.0935
+Iteration 2 | Test Loss = 1.4643
+Iteration 3 | Test Loss = 1.3918
+Iteration 4 | Test Loss = 1.2035
+Result for kernel_regression_rodTap_20_500_all_mlp: 1.2883 ± 0.1318
+Iteration 0 | Test Loss = 2.6528
+Iteration 1 | Test Loss = 3.1932
+Iteration 2 | Test Loss = 2.2103
+Iteration 3 | Test Loss = 2.5322
+Iteration 4 | Test Loss = 2.6282
+Result for kernel_regression_rodTap_30_500_all_svrlinear: 2.6433 ± 0.3170
+Iteration 0 | Test Loss = 2.5070
+Iteration 1 | Test Loss = 3.1269
+Iteration 2 | Test Loss = 2.5615
+Iteration 3 | Test Loss = 2.5183
+Iteration 4 | Test Loss = 2.5233
+Result for kernel_regression_rodTap_30_500_all_svrrbf: 2.6474 ± 0.2404
+Iteration 0 | Test Loss = 2.0546
+Iteration 1 | Test Loss = 2.2900
+Iteration 2 | Test Loss = 2.2532
+Iteration 3 | Test Loss = 1.9869
+Iteration 4 | Test Loss = 1.9015
+Result for kernel_regression_rodTap_30_500_all_mlp: 2.0972 ± 0.1509
+Iteration 0 | Test Loss = 3.9112
+Iteration 1 | Test Loss = 4.0370
+Iteration 2 | Test Loss = 3.6942
+Iteration 3 | Test Loss = 4.5090
+Iteration 4 | Test Loss = 3.7948
+Result for kernel_regression_rodTap_50_500_all_svrlinear: 3.9892 ± 0.2840
+Iteration 0 | Test Loss = 3.0896
+Iteration 1 | Test Loss = 3.2980
+Iteration 2 | Test Loss = 3.3412
+Iteration 3 | Test Loss = 4.0265
+Iteration 4 | Test Loss = 3.1507
+Result for kernel_regression_rodTap_50_500_all_svrrbf: 3.3812 ± 0.3356
+Iteration 0 | Test Loss = 2.6933
+Iteration 1 | Test Loss = 3.0595
+Iteration 2 | Test Loss = 3.1120
+Iteration 3 | Test Loss = 3.4501
+Iteration 4 | Test Loss = 2.8171
+Result for kernel_regression_rodTap_50_500_all_mlp: 3.0264 ± 0.2618
+Iteration 0 | Test Loss = 1.6777
+Iteration 1 | Test Loss = 1.4369
+Iteration 2 | Test Loss = 1.5193
+Iteration 3 | Test Loss = 1.5017
+Iteration 4 | Test Loss = 1.5750
+Result for kernel_regression_rodTap_20_250_all_svrlinear: 1.5421 ± 0.0808
+Iteration 0 | Test Loss = 1.5110
+Iteration 1 | Test Loss = 1.2880
+Iteration 2 | Test Loss = 1.2392
+Iteration 3 | Test Loss = 1.3594
+Iteration 4 | Test Loss = 1.3475
+Result for kernel_regression_rodTap_20_250_all_svrrbf: 1.3490 ± 0.0918
+Iteration 0 | Test Loss = 1.4879
+Iteration 1 | Test Loss = 1.2743
+Iteration 2 | Test Loss = 1.3132
+Iteration 3 | Test Loss = 1.4389
+Iteration 4 | Test Loss = 1.2859
+Result for kernel_regression_rodTap_20_250_all_mlp: 1.3600 ± 0.0867
+Iteration 0 | Test Loss = 2.9343
+Iteration 1 | Test Loss = 2.8322
+Iteration 2 | Test Loss = 2.9033
+Iteration 3 | Test Loss = 2.8260
+Iteration 4 | Test Loss = 2.7954
+Result for kernel_regression_rodTap_30_250_all_svrlinear: 2.8582 ± 0.0519
+Iteration 0 | Test Loss = 2.7141
+Iteration 1 | Test Loss = 2.5715
+Iteration 2 | Test Loss = 2.6737
+Iteration 3 | Test Loss = 2.7003
+Iteration 4 | Test Loss = 2.8409
+Result for kernel_regression_rodTap_30_250_all_svrrbf: 2.7001 ± 0.0863
+Iteration 0 | Test Loss = 2.3194
+Iteration 1 | Test Loss = 2.2198
+Iteration 2 | Test Loss = 2.0542
+Iteration 3 | Test Loss = 1.8399
+Iteration 4 | Test Loss = 2.0650
+Result for kernel_regression_rodTap_30_250_all_mlp: 2.0996 ± 0.1634
+Iteration 0 | Test Loss = 4.3714
+Iteration 1 | Test Loss = 4.4173
+Iteration 2 | Test Loss = 3.8213
+Iteration 3 | Test Loss = 4.3037
+Iteration 4 | Test Loss = 3.7801
+Result for kernel_regression_rodTap_50_250_all_svrlinear: 4.1388 ± 0.2787
+Iteration 0 | Test Loss = 3.7644
+Iteration 1 | Test Loss = 4.0719
+Iteration 2 | Test Loss = 3.6817
+Iteration 3 | Test Loss = 3.7301
+Iteration 4 | Test Loss = 3.0111
+Result for kernel_regression_rodTap_50_250_all_svrrbf: 3.6518 ± 0.3483
+Iteration 0 | Test Loss = 3.5413
+Iteration 1 | Test Loss = 4.4812
+Iteration 2 | Test Loss = 3.5865
+Iteration 3 | Test Loss = 3.7152
+Iteration 4 | Test Loss = 3.0296
+Result for kernel_regression_rodTap_50_250_all_mlp: 3.6707 ± 0.4677
+Iteration 0 | Test Loss = 1.9170
+Iteration 1 | Test Loss = 1.7227
+Iteration 2 | Test Loss = 1.5036
+Iteration 3 | Test Loss = 1.8561
+Iteration 4 | Test Loss = 1.8862
+Result for kernel_regression_rodTap_20_100_all_svrlinear: 1.7771 ± 0.1519
+Iteration 0 | Test Loss = 1.7686
+Iteration 1 | Test Loss = 1.5412
+Iteration 2 | Test Loss = 1.4352
+Iteration 3 | Test Loss = 1.6487
+Iteration 4 | Test Loss = 1.6669
+Result for kernel_regression_rodTap_20_100_all_svrrbf: 1.6121 ± 0.1142
+Iteration 0 | Test Loss = 1.8300
+Iteration 1 | Test Loss = 1.5737
+Iteration 2 | Test Loss = 1.6265
+Iteration 3 | Test Loss = 1.8122
+Iteration 4 | Test Loss = 2.0670
+Result for kernel_regression_rodTap_20_100_all_mlp: 1.7819 ± 0.1744
+Iteration 0 | Test Loss = 3.2053
+Iteration 1 | Test Loss = 2.9528
+Iteration 2 | Test Loss = 3.4088
+Iteration 3 | Test Loss = 3.4455
+Iteration 4 | Test Loss = 3.2794
+Result for kernel_regression_rodTap_30_100_all_svrlinear: 3.2584 ± 0.1756
+Iteration 0 | Test Loss = 2.9856
+Iteration 1 | Test Loss = 2.7971
+Iteration 2 | Test Loss = 3.0849
+Iteration 3 | Test Loss = 3.2371
+Iteration 4 | Test Loss = 3.1655
+Result for kernel_regression_rodTap_30_100_all_svrrbf: 3.0540 ± 0.1534
+Iteration 0 | Test Loss = 3.0364
+Iteration 1 | Test Loss = 2.6924
+Iteration 2 | Test Loss = 2.7890
+Iteration 3 | Test Loss = 3.2978
+Iteration 4 | Test Loss = 2.7748
+Result for kernel_regression_rodTap_30_100_all_mlp: 2.9181 ± 0.2220
+Iteration 0 | Test Loss = 5.0767
+Iteration 1 | Test Loss = 4.6316
+Iteration 2 | Test Loss = 3.9690
+Iteration 3 | Test Loss = 3.9292
+Iteration 4 | Test Loss = 4.4603
+Result for kernel_regression_rodTap_50_100_all_svrlinear: 4.4133 ± 0.4293
+Iteration 0 | Test Loss = 4.0959
+Iteration 1 | Test Loss = 4.1597
+Iteration 2 | Test Loss = 2.9824
+Iteration 3 | Test Loss = 3.4579
+Iteration 4 | Test Loss = 3.9236
+Result for kernel_regression_rodTap_50_100_all_svrrbf: 3.7239 ± 0.4447
+Iteration 0 | Test Loss = 4.4495
+Iteration 1 | Test Loss = 4.2087
+Iteration 2 | Test Loss = 2.5494
+Iteration 3 | Test Loss = 3.2811
+Iteration 4 | Test Loss = 3.7558
+Result for kernel_regression_rodTap_50_100_all_mlp: 3.6489 ± 0.6797
+Iteration 0 | Test Loss = 1.9717
+Iteration 1 | Test Loss = 1.8519
+Iteration 2 | Test Loss = 1.8779
+Iteration 3 | Test Loss = 2.1853
+Iteration 4 | Test Loss = 1.8021
+Result for kernel_regression_rodTap_20_50_all_svrlinear: 1.9378 ± 0.1355
+Iteration 0 | Test Loss = 1.8287
+Iteration 1 | Test Loss = 1.8837
+Iteration 2 | Test Loss = 1.8460
+Iteration 3 | Test Loss = 2.0451
+Iteration 4 | Test Loss = 1.8030
+Result for kernel_regression_rodTap_20_50_all_svrrbf: 1.8813 ± 0.0860
+Iteration 0 | Test Loss = 1.9939
+Iteration 1 | Test Loss = 1.8464
+Iteration 2 | Test Loss = 2.2588
+Iteration 3 | Test Loss = 2.0627
+Iteration 4 | Test Loss = 1.8027
+Result for kernel_regression_rodTap_20_50_all_mlp: 1.9929 ± 0.1632
+Iteration 0 | Test Loss = 3.7552
+Iteration 1 | Test Loss = 3.2583
+Iteration 2 | Test Loss = 3.1563
+Iteration 3 | Test Loss = 4.0135
+Iteration 4 | Test Loss = 3.5460
+Result for kernel_regression_rodTap_30_50_all_svrlinear: 3.5459 ± 0.3153
+Iteration 0 | Test Loss = 3.5615
+Iteration 1 | Test Loss = 3.4114
+Iteration 2 | Test Loss = 2.8937
+Iteration 3 | Test Loss = 3.7273
+Iteration 4 | Test Loss = 3.4248
+Result for kernel_regression_rodTap_30_50_all_svrrbf: 3.4037 ± 0.2794
+Iteration 0 | Test Loss = 3.4219
+Iteration 1 | Test Loss = 3.7750
+Iteration 2 | Test Loss = 2.9428
+Iteration 3 | Test Loss = 3.5272
+Iteration 4 | Test Loss = 3.4252
+Result for kernel_regression_rodTap_30_50_all_mlp: 3.4184 ± 0.2703
+Iteration 0 | Test Loss = 5.4976
+Iteration 1 | Test Loss = 5.3567
+Iteration 2 | Test Loss = 4.6630
+Iteration 3 | Test Loss = 6.3219
+Iteration 4 | Test Loss = 6.0933
+Result for kernel_regression_rodTap_50_50_all_svrlinear: 5.5865 ± 0.5850
+Iteration 0 | Test Loss = 3.8504
+Iteration 1 | Test Loss = 4.3317
+Iteration 2 | Test Loss = 3.8981
+Iteration 3 | Test Loss = 4.5198
+Iteration 4 | Test Loss = 4.8746
+Result for kernel_regression_rodTap_50_50_all_svrrbf: 4.2949 ± 0.3855
+Iteration 0 | Test Loss = 4.1888
+Iteration 1 | Test Loss = 4.9075
+Iteration 2 | Test Loss = 3.8639
+Iteration 3 | Test Loss = 5.2509
+Iteration 4 | Test Loss = 5.4172
+Result for kernel_regression_rodTap_50_50_all_mlp: 4.7256 ± 0.6030
+Iteration 0 | Test Loss = 3.2929
+Iteration 1 | Test Loss = 2.9815
+Iteration 2 | Test Loss = 3.1968
+Iteration 3 | Test Loss = 3.3863
+Iteration 4 | Test Loss = 3.4361
+Result for kernel_regression_rodTap_20_5_all_svrlinear: 3.2587 ± 0.1610
+Iteration 0 | Test Loss = 3.0512
+Iteration 1 | Test Loss = 2.9456
+Iteration 2 | Test Loss = 2.9759
+Iteration 3 | Test Loss = 3.1361
+Iteration 4 | Test Loss = 3.1591
+Result for kernel_regression_rodTap_20_5_all_svrrbf: 3.0536 ± 0.0844
+Iteration 0 | Test Loss = 3.2614
+Iteration 1 | Test Loss = 3.3475
+Iteration 2 | Test Loss = 3.2484
+Iteration 3 | Test Loss = 3.6487
+Iteration 4 | Test Loss = 3.3935
+Result for kernel_regression_rodTap_20_5_all_mlp: 3.3799 ± 0.1448
+Iteration 0 | Test Loss = 4.7935
+Iteration 1 | Test Loss = 5.1702
+Iteration 2 | Test Loss = 5.2577
+Iteration 3 | Test Loss = 5.3919
+Iteration 4 | Test Loss = 5.0200
+Result for kernel_regression_rodTap_30_5_all_svrlinear: 5.1267 ± 0.2058
+Iteration 0 | Test Loss = 4.2570
+Iteration 1 | Test Loss = 4.7970
+Iteration 2 | Test Loss = 4.7100
+Iteration 3 | Test Loss = 4.8061
+Iteration 4 | Test Loss = 4.7358
+Result for kernel_regression_rodTap_30_5_all_svrrbf: 4.6612 ± 0.2053
+Iteration 0 | Test Loss = 5.0932
+Iteration 1 | Test Loss = 5.6799
+Iteration 2 | Test Loss = 5.3346
+Iteration 3 | Test Loss = 5.3960
+Iteration 4 | Test Loss = 5.3271
+Result for kernel_regression_rodTap_30_5_all_mlp: 5.3662 ± 0.1878
+Iteration 0 | Test Loss = 7.3986
+Iteration 1 | Test Loss = 8.1094
+Iteration 2 | Test Loss = 8.3097
+Iteration 3 | Test Loss = 6.9712
+Iteration 4 | Test Loss = 7.3941
+Result for kernel_regression_rodTap_50_5_all_svrlinear: 7.6366 ± 0.4969
+Iteration 0 | Test Loss = 6.6576
+Iteration 1 | Test Loss = 6.9089
+Iteration 2 | Test Loss = 7.7594
+Iteration 3 | Test Loss = 5.9237
+Iteration 4 | Test Loss = 6.4375
+Result for kernel_regression_rodTap_50_5_all_svrrbf: 6.7374 ± 0.6054
+Iteration 0 | Test Loss = 9.4587
+Iteration 1 | Test Loss = 8.0052
+Iteration 2 | Test Loss = 8.8594
+Iteration 3 | Test Loss = 7.9440
+Iteration 4 | Test Loss = 7.6007
+Result for kernel_regression_rodTap_50_5_all_mlp: 8.3736 ± 0.6828

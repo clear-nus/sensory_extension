@@ -559,14 +559,22 @@ def _load_food(signal_type, transformation, frequency):
     
     if signal_type == 'biotac' and frequency != 2200: directory = 'downsampled'
     if signal_type == 'neutouch' and frequency != 4000: directory = 'downsampled'
+        
+    npzfile0 = np.load(f'{directory}/{base_signal_type}_food_empty.npz')
+    npzfile1 = np.load(f'{directory}/{base_signal_type}_food_water.npz')
+    npzfile2 = np.load(f'{directory}/{base_signal_type}_food_tofu.npz')
+    npzfile3 = np.load(f'{directory}/{base_signal_type}_food_watermelon.npz')
+    npzfile4 = np.load(f'{directory}/{base_signal_type}_food_banana.npz')
+    npzfile5 = np.load(f'{directory}/{base_signal_type}_food_apple.npz')
+    npzfile6 = np.load(f'{directory}/{base_signal_type}_food_pepper.npz')
     
-    npzfile0 = np.load(f'{directory}/{base_signal_type}_food_empty_{frequency}hz.npz')
-    npzfile1 = np.load(f'{directory}/{base_signal_type}_food_water_{frequency}hz.npz')
-    npzfile2 = np.load(f'{directory}/{base_signal_type}_food_tofu_{frequency}hz.npz')
-    npzfile3 = np.load(f'{directory}/{base_signal_type}_food_watermelon_{frequency}hz.npz')
-    npzfile4 = np.load(f'{directory}/{base_signal_type}_food_banana_{frequency}hz.npz')
-    npzfile5 = np.load(f'{directory}/{base_signal_type}_food_apple_{frequency}hz.npz')
-    npzfile6 = np.load(f'{directory}/{base_signal_type}_food_pepper_{frequency}hz.npz')
+#     npzfile0 = np.load(f'{directory}/{base_signal_type}_food_empty_{frequency}hz.npz')
+#     npzfile1 = np.load(f'{directory}/{base_signal_type}_food_water_{frequency}hz.npz')
+#     npzfile2 = np.load(f'{directory}/{base_signal_type}_food_tofu_{frequency}hz.npz')
+#     npzfile3 = np.load(f'{directory}/{base_signal_type}_food_watermelon_{frequency}hz.npz')
+#     npzfile4 = np.load(f'{directory}/{base_signal_type}_food_banana_{frequency}hz.npz')
+#     npzfile5 = np.load(f'{directory}/{base_signal_type}_food_apple_{frequency}hz.npz')
+#     npzfile6 = np.load(f'{directory}/{base_signal_type}_food_pepper_{frequency}hz.npz')
     
     X = np.vstack((npzfile0['signals'],
                    npzfile1['signals'],
@@ -619,13 +627,36 @@ def _load_food(signal_type, transformation, frequency):
 
 
 def _evaluate_food_svm(signal_type, perform_fft, kernel, frequency):
+    
+    import pickle
 
     X, y = _load_food(signal_type, 'fft' if perform_fft else 'default', frequency)
+    
+    #### TAS ####
+    
+    #cmatrix = None
+    count = 0
+    def confusion_matrix_callback(gs_estimator, X_test, y_test):
+        
+        nonlocal count
+        
+        pickle.dump([gs_estimator.predict(X_test), y_test], open(f'cm/biotac_food_all_fft_svm_rbf_{count}.pkl', 'wb'))
+        count+=1
+        
+        #nonlocal cmatrix
+        
+        #matrix = confusion_matrix(gs_estimator.predict(X_test), y_test)
+        #cmatrix = matrix if cmatrix is None else cmatrix + matrix 
+        #plt.figure(figsize=(6, 5))
+        #sn.heatmap(pd.DataFrame(cmatrix, index=classes, columns=classes), annot=True)
+        #plt.savefig('diagrams/biotac_food_cmatrix.pdf', bbox_inches='tight')
+        
+    #### TAS ####
     
     param_grid = { 'C': [1, 3, 10, 30, 100] }
     
     estimator = SVC(kernel=kernel, max_iter=5000)
-    evaluate = _create_evaluator(estimator, param_grid, 'accuracy', N=20)
+    evaluate = _create_evaluator(estimator, param_grid, 'accuracy', N=20, callback=confusion_matrix_callback)
     
     return evaluate(X, y)
 
@@ -649,6 +680,8 @@ def _evaluate_food_rnn(signal_type, device, frequency):
 
     X, y = _load_food(signal_type, 'tensor', frequency)
     
+
+    
     param_grid = { 'lr': [0.001, 0.003, 0.01] }
     
     estimator = NeuralNetClassifier(RNNModule,
@@ -666,7 +699,7 @@ def _evaluate_food_rnn(signal_type, device, frequency):
     evaluate = _create_evaluator(estimator,
                                  param_grid,
                                  'accuracy',
-                                 ShuffleSplit(n_splits=1, test_size=.2, random_state=0))
+                                 ShuffleSplit(n_splits=1, test_size=.2, random_state=0), callback=confusion_matrix_callback)
     
     return evaluate(X, y)
 

@@ -314,6 +314,7 @@ def _load_tool(tool_length, signal_type, transformation, frequency):
 
         X = npzfile['signals'] / 1000
         y = npzfile['labels'] * 100
+        print('Max, Min:', X.max(), X.min())
         
     if signal_type == 'neuhalf':
         
@@ -344,6 +345,8 @@ def _load_tool(tool_length, signal_type, transformation, frequency):
         X = torch.Tensor(np.swapaxes(X, 1, 2))
         y = torch.Tensor(np.reshape(y, (-1, 1)))
     
+    print('Max, Min:', X.max(), X.min())
+    print(X.shape, y.shape)
     return X, y
 
 

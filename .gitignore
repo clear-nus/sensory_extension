@@ -1,3 +1,7 @@
 .ipynb_checkpoints
 preprocessed/*.npz
 downsampled/*.npz
+real_time_demo_food_poking/
+real_time_demo_models/
+
+
